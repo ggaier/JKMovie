@@ -30,6 +30,14 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile "android.arch.lifecycle:runtime:$architecture_component_version"
+    compile "android.arch.lifecycle:extensions:$architecture_component_version"
+    annotationProcessor "android.arch.lifecycle:compiler:$architecture_component_version"
+    compile "android.arch.persistence.room:runtime:$architecture_component_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$architecture_component_version"
+    testCompile "android.arch.persistence.room:testing:$architecture_component_version"
+    compile "android.arch.persistence.room:rxjava2:$architecture_component_version"
+
 }
 repositories {
     mavenCentral()
