@@ -9,6 +9,15 @@ import io.reactivex.Observable
  */
 interface MoviesDataSource {
 
+    /**
+     * Get a list of the current popular movies on TMDb. This list updates daily.
+     * 获取当前在TMDB中流行的电影。
+     *
+     * @param language Pass a ISO 639-1 value to display translated data for the fields that
+     *      support it.
+     * @param page Specify which page to query.
+     * @param region Specify a ISO 3166-1 code to filter release dates.
+     */
     fun getPopularMovies(language: String = "", page: Int = 1, region: String?)
             : Observable<List<Video>>
 
