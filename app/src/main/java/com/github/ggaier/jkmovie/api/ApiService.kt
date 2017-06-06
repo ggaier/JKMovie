@@ -13,7 +13,7 @@ interface ApiService {
      * 根据地区和语言获取对应的热门电影。
      */
     @GET("/movie/popular")
-    fun fetchPopularMovies(language: String? = null, page: Int = 1, region: String? = null)
+    fun fetchPopularMovies(language: String?, page: Int, region: String?)
 
 
 }
