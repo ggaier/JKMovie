@@ -14,7 +14,10 @@ data class Video(val id: String,
                  val popularity: Float,
                  @SerializedName("post_path") val postPath: String,
                  @SerializedName("original_language") val originalLanguage: String,
-                 @SerializedName("original_title") val originalTitle:String,
-                 @SerializedName("genre_ids") val genreIds:Array<String>,
-                 @SerializedName("back"))
+                 @SerializedName("original_title") val originalTitle: String,
+                 @SerializedName("genre_ids") val genreIds: Array<String>,
+                 @SerializedName("backdrop_path") val backdropPath: String,
+                 @SerializedName("adult") val isAdult: Boolean,
+                 val overview: String,
+                 @SerializedName("release_date") val releaseDate: String)
 

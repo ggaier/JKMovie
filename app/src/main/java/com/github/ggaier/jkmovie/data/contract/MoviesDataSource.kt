@@ -1,5 +1,6 @@
 package com.github.ggaier.jkmovie.data.contract
 
+import com.github.ggaier.jkmovie.data.vo.Video
 import io.reactivex.Observable
 
 /**
