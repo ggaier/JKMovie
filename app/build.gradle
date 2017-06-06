@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 25
@@ -26,19 +27,28 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile "com.android.support:appcompat-v7:$support_version"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+
+    testCompile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
     compile "android.arch.lifecycle:runtime:$architecture_component_version"
     compile "android.arch.lifecycle:extensions:$architecture_component_version"
-    annotationProcessor "android.arch.lifecycle:compiler:$architecture_component_version"
+    kapt "android.arch.lifecycle:compiler:$architecture_component_version"
+
     compile "android.arch.persistence.room:runtime:$architecture_component_version"
-    annotationProcessor "android.arch.persistence.room:compiler:$architecture_component_version"
-    testCompile "android.arch.persistence.room:testing:$architecture_component_version"
+    kapt "android.arch.persistence.room:compiler:$architecture_component_version"
+
+
+    testCompile("android.arch.persistence.room:testing:$architecture_component_version", {
+        exclude group: 'com.google.code.gson' // exclude version 2.8
+    })
     compile "android.arch.persistence.room:rxjava2:$architecture_component_version"
 
-}
-repositories {
-    mavenCentral()
+    compile "com.squareup.retrofit2:retrofit:$retrofit_version"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+
 }

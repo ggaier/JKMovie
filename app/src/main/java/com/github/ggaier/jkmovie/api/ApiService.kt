@@ -1,5 +1,7 @@
 package com.github.ggaier.jkmovie.api
 
+import retrofit2.http.GET
+
 /**
  * Created by ggaier
  * jwenbo52@gmail.com
@@ -7,11 +9,11 @@ package com.github.ggaier.jkmovie.api
 interface ApiService {
 
 
-    ///movie/popular
     /**
      * 根据地区和语言获取对应的热门电影。
      */
-    fun fetchPopularMovies(language: String?, page: Int = 1, region: String?)
+    @GET("/movie/popular")
+    fun fetchPopularMovies(language: String? = null, page: Int = 1, region: String? = null)
 
 
 }
