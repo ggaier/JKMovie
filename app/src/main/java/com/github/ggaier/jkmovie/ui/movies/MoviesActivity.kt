@@ -14,7 +14,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.github.ggaier.jkmovie.R
 import com.github.ggaier.jkmovie.data.vo.Video
+import com.github.ggaier.jkmovie.util.load
 import kotlinx.android.synthetic.main.activity_movies.*
+import kotlinx.android.synthetic.main.list_item_movie_1.view.*
 
 class MoviesActivity : AppCompatActivity() {
 
@@ -24,17 +26,17 @@ class MoviesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies)
 
-        mAdapter = MoviesAdapter()
+        mAdapter = MoviesAdapter(this)
         recycler_view.adapter = mAdapter
         recycler_view.layoutManager = GridLayoutManager(this, 2)
         val dividerItemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        dividerItemDecoration.setDrawable(InsetDrawable(ColorDrawable(Color.WHITE),
-                resources.getDimensionPixelSize(R.dimen.spacing_small)))
+        dividerItemDecoration.setDrawable(InsetDrawable(ColorDrawable(Color.WHITE), resources.getDimensionPixelSize(R.dimen.spacing_small)))
         recycler_view.addItemDecoration(dividerItemDecoration)
     }
 
 
     class MoviesAdapter(
+            val activity: MoviesActivity,
             val mMovies: MutableList<Video> = mutableListOf()) : Adapter<MoviesAdapter.MovieViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MovieViewHolder {
@@ -48,13 +50,13 @@ class MoviesActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: MovieViewHolder?, position: Int) {
-
+            val movie = mMovies[position]
+            holder?.itemView?.poster?.load(activity, movie?.postPath)
+            holder?.itemView?.title?.text = movie.title
         }
 
 
-        class MovieViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-
-        }
+        class MovieViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)
     }
 
 

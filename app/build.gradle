@@ -34,6 +34,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:$support_version"
     compile "com.android.support.constraint:constraint-layout:$constraint_layout_version"
     compile "com.android.support:design:$support_version"
+    compile "com.android.support:support-v4:$support_version"
 
 
     testCompile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
@@ -55,5 +56,8 @@ dependencies {
     compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     compile "org.jetbrains.anko:anko:$anko_version"
+
+    compile "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
 
 }
