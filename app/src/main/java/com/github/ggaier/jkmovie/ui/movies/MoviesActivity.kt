@@ -18,7 +18,15 @@ import com.github.ggaier.jkmovie.util.load
 import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.android.synthetic.main.list_item_movie_1.view.*
 
-class MoviesActivity : AppCompatActivity() {
+class MoviesActivity : AppCompatActivity(), MoviesView {
+
+    override fun setProgressIndicator(active: Boolean) {
+
+    }
+
+    override fun showPopularMovies(movies: List<Video>) {
+        mAdapter.notifyWith(movies)
+    }
 
     lateinit var mAdapter: MoviesAdapter
 
@@ -30,7 +38,8 @@ class MoviesActivity : AppCompatActivity() {
         recycler_view.adapter = mAdapter
         recycler_view.layoutManager = GridLayoutManager(this, 2)
         val dividerItemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        dividerItemDecoration.setDrawable(InsetDrawable(ColorDrawable(Color.WHITE), resources.getDimensionPixelSize(R.dimen.spacing_small)))
+        dividerItemDecoration.setDrawable(InsetDrawable(ColorDrawable(Color.WHITE),
+                resources.getDimensionPixelSize(R.dimen.spacing_small)))
         recycler_view.addItemDecoration(dividerItemDecoration)
     }
 
@@ -57,6 +66,12 @@ class MoviesActivity : AppCompatActivity() {
 
 
         class MovieViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)
+
+        fun notifyWith(movies: List<Video>) {
+            val from = mMovies.size
+            mMovies.addAll(movies)
+            notifyItemRangeChanged(from, mMovies.size)
+        }
     }
 
 
