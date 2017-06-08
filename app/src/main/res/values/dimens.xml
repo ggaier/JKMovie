@@ -5,5 +5,8 @@
     <dimen name="spacing_normal">8dp</dimen>
     <dimen name="spacing_large">16dp</dimen>
 
+    <dimen name="two_line_grid_list_text_height">68dp</dimen>
+
+    <dimen name="divider_size">1dp</dimen>
 
 </resources>
