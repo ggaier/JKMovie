@@ -38,7 +38,9 @@ class MoviesActivity : AppCompatActivity() {
             val mMovies: MutableList<Video> = mutableListOf()) : Adapter<MoviesAdapter.MovieViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MovieViewHolder {
-            return MovieViewHolder(LayoutInflater.from(parent.context).inflate())
+            return MovieViewHolder(
+                    LayoutInflater.from(parent?.context).inflate(R.layout.list_item_movie_1,
+                            parent, false))
         }
 
         override fun getItemCount(): Int {
@@ -46,7 +48,7 @@ class MoviesActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: MovieViewHolder?, position: Int) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
         }
 
 
