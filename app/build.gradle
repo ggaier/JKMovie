@@ -27,6 +27,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
     })
     testCompile 'junit:junit:4.12'
 
@@ -61,7 +62,8 @@ dependencies {
 
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     compile "com.google.dagger:dagger:$dagger_version"
-    compile "com.google.dagger:dagger-android-support:$dagger_version" // if you use the support libraries
+    compile "com.google.dagger:dagger-android-support:$dagger_version"
+    // if you use the support libraries
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
 }
