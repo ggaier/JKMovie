@@ -17,6 +17,7 @@ buildscript {
         anko_version = '0.10.1'
         constraint_layout_version = '1.0.2'
         glide_version = '4.0.0-RC0'
+        dagger_version='2.11'
     }
 
     repositories {

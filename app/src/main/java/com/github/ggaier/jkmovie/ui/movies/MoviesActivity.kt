@@ -20,15 +20,16 @@ import kotlinx.android.synthetic.main.list_item_movie_1.view.*
 
 class MoviesActivity : AppCompatActivity(), MoviesView {
 
+    lateinit var mAdapter: MoviesAdapter
+
     override fun setProgressIndicator(active: Boolean) {
 
     }
 
     override fun showPopularMovies(movies: List<Video>) {
-        mAdapter.notifyWith(movies)
+        mAdapter.add(movies)
     }
 
-    lateinit var mAdapter: MoviesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +68,7 @@ class MoviesActivity : AppCompatActivity(), MoviesView {
 
         class MovieViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)
 
-        fun notifyWith(movies: List<Video>) {
+        fun add(movies: List<Video>) {
             val from = mMovies.size
             mMovies.addAll(movies)
             notifyItemRangeChanged(from, mMovies.size)
