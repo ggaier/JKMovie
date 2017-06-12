@@ -15,9 +15,8 @@ class MoviesRepository(val mRemoteDS: MoviesRemoteDataSource,
 
 
     override fun getPopularMovies(language: String, page: Int,
-                                  region: String?): Observable<List<Video>> {
-
-        return mRemoteDS.getPopularMovies(language, page, region)
+                                  region: String? ): Observable<List<Video>> {
+        return mRemoteDS.getPopularMovies(language=language, page=page)
     }
 
 }

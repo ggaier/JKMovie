@@ -18,7 +18,7 @@ interface MoviesDataSource {
      * @param page Specify which page to query.
      * @param region Specify a ISO 3166-1 code to filter release dates.
      */
-    fun getPopularMovies(language: String = "", page: Int = 1, region: String?)
+    open fun getPopularMovies(language: String = "En", page: Int = 1, region: String? = "US")
             : Observable<List<Video>>
 
 }
