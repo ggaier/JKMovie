@@ -14,19 +14,23 @@ import android.view.View
 import android.view.ViewGroup
 import com.github.ggaier.jkmovie.R
 import com.github.ggaier.jkmovie.data.vo.Video
+import com.github.ggaier.jkmovie.di.Injections
 import com.github.ggaier.jkmovie.util.load
+import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.android.synthetic.main.list_item_movie_1.view.*
 
 class MoviesActivity : AppCompatActivity(), MoviesView {
 
     lateinit var mAdapter: MoviesAdapter
+    lateinit var mPresenter: MoviesPresenterIn
 
     override fun setProgressIndicator(active: Boolean) {
 
     }
 
     override fun showPopularMovies(movies: List<Video>) {
+        Logger.d("movies $movies")
         mAdapter.add(movies)
     }
 
@@ -35,6 +39,8 @@ class MoviesActivity : AppCompatActivity(), MoviesView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies)
 
+        mPresenter = Injections.getMoviesPresenter(this)
+
         mAdapter = MoviesAdapter(this)
         recycler_view.adapter = mAdapter
         recycler_view.layoutManager = GridLayoutManager(this, 2)
@@ -42,6 +48,11 @@ class MoviesActivity : AppCompatActivity(), MoviesView {
         dividerItemDecoration.setDrawable(InsetDrawable(ColorDrawable(Color.WHITE),
                 resources.getDimensionPixelSize(R.dimen.spacing_small)))
         recycler_view.addItemDecoration(dividerItemDecoration)
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        mPresenter.init(page = 1)
     }
 
 

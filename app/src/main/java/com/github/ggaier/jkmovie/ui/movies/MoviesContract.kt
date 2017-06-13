@@ -16,6 +16,6 @@ interface MoviesView : ViewIn {
 
 interface MoviesPresenterIn : PresenterIn<MoviesView> {
 
-    fun init(tag: String, language: String, page: Int)
+    fun init(tag: String = "", language: String = "En", page: Int = 1)
 
 }
