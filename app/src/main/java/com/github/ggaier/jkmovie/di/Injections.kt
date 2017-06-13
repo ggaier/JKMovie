@@ -9,6 +9,7 @@ import com.github.ggaier.jkmovie.ui.movies.MoviesPresenter
 import com.github.ggaier.jkmovie.ui.movies.MoviesPresenterIn
 import com.github.ggaier.jkmovie.ui.movies.MoviesView
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
@@ -29,6 +30,7 @@ class Injections {
         fun apiService(): ApiService =
                 Retrofit.Builder().baseUrl(TMDB_BASE_URL)
                         .addConverterFactory(GsonConverterFactory.create())
+                        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                         .build()
                         .create(ApiService::class.java)
 
