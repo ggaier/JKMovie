@@ -9,7 +9,7 @@
 buildscript {
 
     ext {
-        kotlin_version = '1.1.2'
+        kotlin_version = '1.1.2-4'
         architecture_component_version = '1.0.0-alpha1'
         retrofit_version = '2.3.0'
         support_version = '25.3.1'
