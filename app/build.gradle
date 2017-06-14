@@ -14,12 +14,20 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
+
+        debug {
+            buildConfigField("String", "TMDB_API_KEY", TMDB_API_KEY)
+        }
+
         release {
+            initWith debug
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
