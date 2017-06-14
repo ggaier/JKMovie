@@ -9,7 +9,7 @@
 buildscript {
 
     ext {
-        kotlin_version = '1.1.2-4'
+        kotlin_version = '1.1.2-2'
         architecture_component_version = '1.0.0-alpha1'
         retrofit_version = '2.3.0'
         support_version = '25.3.1'
@@ -18,6 +18,8 @@ buildscript {
         glide_version = '4.0.0-RC0'
         dagger_version = '2.11'
         logger_version = '2.1.1'
+        okhttp_version = '3.8.0'
+        rxandroid_version = '2.0.1'
     }
 
     repositories {

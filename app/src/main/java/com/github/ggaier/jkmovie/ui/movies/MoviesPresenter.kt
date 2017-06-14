@@ -1,7 +1,8 @@
 package com.github.ggaier.jkmovie.ui.movies
 
 import com.github.ggaier.jkmovie.data.MoviesRepository
-import java.util.*
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by ggaier
@@ -15,8 +16,12 @@ open class MoviesPresenter(val mMoviesView: MoviesView,
     }
 
     override fun init(tag: String, language: String, page: Int) {
-        mMoviesRepository.getPopularMovies(language=language,page=page,region = "US")
-        mMoviesView.showPopularMovies(Collections.emptyList())
+        mMoviesRepository.getPopularMovies(language = language, page = page, region = "US")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    mMoviesView.showPopularMovies(it)
+                })
     }
 
 }
