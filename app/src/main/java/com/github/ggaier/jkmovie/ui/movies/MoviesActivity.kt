@@ -72,7 +72,7 @@ class MoviesActivity : AppCompatActivity(), MoviesView {
 
         override fun onBindViewHolder(holder: MovieViewHolder?, position: Int) {
             val movie = mMovies[position]
-            holder?.itemView?.poster?.load(activity, movie.backdropPath)
+            holder?.itemView?.poster?.load(activity, movie.realBackdropPath)
             holder?.itemView?.title?.text = movie.title
         }
 

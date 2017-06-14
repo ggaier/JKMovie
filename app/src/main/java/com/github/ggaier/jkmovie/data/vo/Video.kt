@@ -1,5 +1,6 @@
 package com.github.ggaier.jkmovie.data.vo
 
+import com.github.ggaier.jkmovie.TMDB_IMAGE_BASE_URL
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -16,10 +17,16 @@ data class Video(val id: String,
                  @SerializedName("original_language") val originalLanguage: String,
                  @SerializedName("original_title") val originalTitle: String,
                  @SerializedName("genre_ids") val genreIds: Array<String>,
-                 @SerializedName("backdrop_path") val backdropPath: String,
+                 @SerializedName("backdrop_path") private val backdropPath: String,
                  @SerializedName("adult") val isAdult: Boolean,
                  val overview: String,
-                 @SerializedName("release_date") val releaseDate: String)
+                 @SerializedName("release_date") val releaseDate: String) {
+
+    val realBackdropPath: String
+        get() {
+            return TMDB_IMAGE_BASE_URL.plus(backdropPath)
+        }
+}
 
 
 
