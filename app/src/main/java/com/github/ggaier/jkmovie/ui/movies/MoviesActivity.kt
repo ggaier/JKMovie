@@ -1,11 +1,7 @@
 package com.github.ggaier.jkmovie.ui.movies
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.Adapter
@@ -15,10 +11,12 @@ import android.view.ViewGroup
 import com.github.ggaier.jkmovie.R
 import com.github.ggaier.jkmovie.data.vo.Video
 import com.github.ggaier.jkmovie.di.Injections
+import com.github.ggaier.jkmovie.ui.widget.SpacestemDecoration
 import com.github.ggaier.jkmovie.util.load
 import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.android.synthetic.main.list_item_movie_1.view.*
+import org.jetbrains.anko.dip
 
 class MoviesActivity : AppCompatActivity(), MoviesView {
 
@@ -44,10 +42,7 @@ class MoviesActivity : AppCompatActivity(), MoviesView {
         mAdapter = MoviesAdapter(this)
         recycler_view.adapter = mAdapter
         recycler_view.layoutManager = GridLayoutManager(this, 2)
-        val dividerItemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        dividerItemDecoration.setDrawable(InsetDrawable(ColorDrawable(Color.WHITE),
-                resources.getDimensionPixelSize(R.dimen.spacing_small)))
-        recycler_view.addItemDecoration(dividerItemDecoration)
+        recycler_view.addItemDecoration(SpacestemDecoration(dip(8)))
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
