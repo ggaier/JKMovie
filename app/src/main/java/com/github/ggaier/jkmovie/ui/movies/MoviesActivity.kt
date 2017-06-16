@@ -41,7 +41,7 @@ class MoviesActivity : AppCompatActivity(), MoviesView {
 
         mAdapter = MoviesAdapter(this)
         recycler_view.adapter = mAdapter
-        recycler_view.layoutManager = GridLayoutManager(this, 2)
+        recycler_view.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager
         recycler_view.addItemDecoration(SpacestemDecoration(dip(4)))
     }
 
