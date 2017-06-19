@@ -2,6 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
+        <import type="android.view.View"/>
+
         <variable
             name="isLoading"
             type="boolean"/>
@@ -31,15 +34,15 @@
             android:id="@+id/refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:isRefreshing="@{isLoading}">
+            zandroid:refreshing="@{isLoading}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="Popular Movies"
-                android:visibility="@{isLoading?gone:visible}"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+                android:visibility="@{isLoading?View.GONE:View.VISIBLE}"/>
         </android.support.v4.widget.SwipeRefreshLayout>
 
 
