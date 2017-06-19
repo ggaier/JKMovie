@@ -6,7 +6,7 @@ import com.github.ggaier.jkmovie.api.ApiService
 import com.github.ggaier.jkmovie.data.MoviesRepository
 import com.github.ggaier.jkmovie.data.local.MoviesLocalDataSource
 import com.github.ggaier.jkmovie.data.remote.MoviesRemoteDataSource
-import com.github.ggaier.jkmovie.ui.movies.MoviesPresenter
+import com.github.ggaier.jkmovie.viewmodel.MovieListViewModel
 import com.github.ggaier.jkmovie.ui.movies.MoviesPresenterIn
 import com.github.ggaier.jkmovie.ui.movies.MoviesView
 import okhttp3.OkHttpClient
@@ -40,7 +40,7 @@ object Injections {
 
 
     fun getMoviesPresenter(movieView: MoviesView): MoviesPresenterIn {
-        return MoviesPresenter(movieView,
+        return MovieListViewModel(movieView,
                 MoviesRepository(MoviesRemoteDataSource(mApiService), MoviesLocalDataSource()))
     }
 

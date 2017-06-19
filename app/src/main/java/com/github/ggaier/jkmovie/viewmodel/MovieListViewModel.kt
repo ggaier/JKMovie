@@ -1,6 +1,8 @@
-package com.github.ggaier.jkmovie.ui.movies
+package com.github.ggaier.jkmovie.viewmodel
 
 import com.github.ggaier.jkmovie.data.MoviesRepository
+import com.github.ggaier.jkmovie.ui.movies.MoviesPresenterIn
+import com.github.ggaier.jkmovie.ui.movies.MoviesView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -8,8 +10,8 @@ import io.reactivex.schedulers.Schedulers
  * Created by ggaier
  * jwenbo52@gmail.com
  */
-open class MoviesPresenter(val mMoviesView: MoviesView,
-                           val mMoviesRepository: MoviesRepository) : MoviesPresenterIn {
+open class MovieListViewModel(val mMoviesView: MoviesView,
+                              val mMoviesRepository: MoviesRepository) : MoviesPresenterIn {
 
     override fun onUnsubscribe() {
 
