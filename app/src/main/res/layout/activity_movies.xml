@@ -1,30 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.github.ggaier.jkmovie.ui.movies.MoviesActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.design.widget.AppBarLayout
+    <data>
+        <variable
+            name="isLoading"
+            type="boolean"/>
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        tools:context="com.github.ggaier.jkmovie.ui.movies.MoviesActivity">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            style="@style/Widget.AppCompat.Toolbar"
-            app:title="@string/app_name"
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"/>
+            android:layout_height="wrap_content">
 
-    </android.support.design.widget.AppBarLayout>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/Widget.AppCompat.Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:title="@string/app_name"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:isRefreshing="@{isLoading}">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Popular Movies"
+                android:visibility="@{isLoading?gone:visible}"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
 
 
-</android.support.design.widget.CoordinatorLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

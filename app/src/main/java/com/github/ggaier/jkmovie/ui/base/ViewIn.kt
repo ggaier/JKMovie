@@ -6,6 +6,4 @@ package com.github.ggaier.jkmovie.ui.base
  */
 interface ViewIn {
 
-    fun setProgressIndicator(active: Boolean)
-
 }
