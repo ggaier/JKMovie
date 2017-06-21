@@ -1,7 +1,8 @@
 package com.github.ggaier.jkmovie.ui.movies
 
+import android.arch.lifecycle.LiveData
+import android.graphics.Movie
 import com.github.ggaier.jkmovie.data.vo.Video
-import com.github.ggaier.jkmovie.ui.base.PresenterIn
 import com.github.ggaier.jkmovie.ui.base.ViewIn
 
 /**
@@ -14,8 +15,10 @@ interface MoviesView : ViewIn {
 
 }
 
-interface MoviesPresenterIn : PresenterIn<MoviesView> {
+interface MoviesPresenterIn {
 
-    fun init(tag: String = "", language: String = "En", page: Int = 1)
+    fun setMovieTag(tag: String = "", language: String = "En", page: Int = 1)
+
+    fun getMovies(): LiveData<List<Video>>
 
 }
