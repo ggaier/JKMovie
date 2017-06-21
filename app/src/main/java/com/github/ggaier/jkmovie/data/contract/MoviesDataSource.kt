@@ -1,5 +1,6 @@
 package com.github.ggaier.jkmovie.data.contract
 
+import android.arch.lifecycle.LiveData
 import com.github.ggaier.jkmovie.data.vo.Video
 import io.reactivex.Observable
 
@@ -19,6 +20,6 @@ interface MoviesDataSource {
      * @param region Specify a ISO 3166-1 code to filter release dates.
      */
     fun getPopularMovies(language: String = "En", page: Int = 1, region: String? = "US")
-            : Observable<List<Video>>
+            : LiveData<List<Video>>
 
 }

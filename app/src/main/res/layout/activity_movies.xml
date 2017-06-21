@@ -34,7 +34,7 @@
             android:id="@+id/refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            zandroid:refreshing="@{isLoading}"
+            android:refreshing="@{isLoading}"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <android.support.v7.widget.RecyclerView
