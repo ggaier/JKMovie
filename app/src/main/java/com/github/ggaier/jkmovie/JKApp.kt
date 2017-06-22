@@ -8,7 +8,9 @@ import com.orhanobut.logger.Logger
  * Created by ggaier
  * jwenbo52@gmail.com
  */
-class JKApp : Application() {
+object JKApp : Application() {
+
+    val instance = this
 
     override fun onCreate() {
         super.onCreate()
