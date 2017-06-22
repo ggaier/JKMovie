@@ -1,6 +1,6 @@
 package com.github.ggaier.jkmovie.di
 
-import com.github.ggaier.jkmovie.JKApp
+import android.app.Application
 import com.github.ggaier.jkmovie.TMDB_BASE_URL
 import com.github.ggaier.jkmovie.api.ApiInterceptor
 import com.github.ggaier.jkmovie.api.ApiService
@@ -24,6 +24,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 object Injections {
 
     val mApiService: ApiService
+    lateinit var mApplication: Application
+        private set
 
     init {
 
@@ -41,11 +43,17 @@ object Injections {
                 .create(ApiService::class.java)
     }
 
+    fun init(application: Application) {
+        mApplication = application
+    }
+
 
     fun getMoviesPresenter(movieView: MoviesView): MoviesPresenterIn {
-        return MovieListModel(movieView,
-                MoviesRepository(MoviesRemoteDataSource(mApiService), MoviesLocalDataSource()),
-                JKApp.instance)
+        return MovieListModel(mApplication)
+    }
+
+    fun getMoviesRepo(): MoviesRepository {
+        return MoviesRepository(MoviesRemoteDataSource(mApiService), MoviesLocalDataSource())
     }
 
 }
