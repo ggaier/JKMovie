@@ -1,8 +1,9 @@
 package com.github.ggaier.jkmovie.data.local
 
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
 import com.github.ggaier.jkmovie.data.contract.MoviesDataSource
 import com.github.ggaier.jkmovie.data.vo.Video
-import io.reactivex.Observable
 
 /**
  * Created by ggaier
@@ -11,8 +12,8 @@ import io.reactivex.Observable
 class MoviesLocalDataSource : MoviesDataSource {
 
     override fun getPopularMovies(language: String, page: Int,
-                                  region: String?): Observable<List<Video>> {
-        return Observable.empty()
+                                  region: String?): LiveData<List<Video>> {
+        return MutableLiveData<List<Video>>()
     }
 
 }
