@@ -50,9 +50,9 @@ class MoviesActivity : LifecycleActivity(), MoviesView {
         mMoviesModel.setMovieTag(page = 1)
         mMoviesModel.getMovies().observe(this,
                 Observer<List<Video>> {
-                    Logger.d("videos are $it ")
+                    Logger.d("videos are $it , ${it!!::class.java}")
                     mBinding.isLoading = it == null
-                    mAdapter.add(it ?: emptyList())
+                    mAdapter.add(it)
                 })
     }
 
