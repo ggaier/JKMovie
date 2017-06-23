@@ -14,7 +14,6 @@ import com.github.ggaier.jkmovie.viewmodel.MovieListModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
@@ -36,7 +35,6 @@ object Injections {
                                 HttpLoggingInterceptor.Level.BODY))
         mApiService = Retrofit.Builder().baseUrl(TMDB_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addCallAdapterFactory(LiveDataCallAdapterFactory())
                 .client(client.build())
                 .build()

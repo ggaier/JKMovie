@@ -2,7 +2,6 @@ package com.github.ggaier.jkmovie.api
 
 import android.arch.lifecycle.LiveData
 import com.github.ggaier.jkmovie.data.vo.Video
-import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
 

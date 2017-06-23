@@ -2,6 +2,7 @@ package com.github.ggaier.jkmovie.util
 
 import android.arch.lifecycle.LiveData
 import com.github.ggaier.jkmovie.api.ApiHttpResponse
+import com.orhanobut.logger.Logger
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Callback
@@ -19,18 +20,20 @@ class LiveDataCallAdapter<R>(
 
     override fun adapt(call: Call<R>?): LiveData<ApiHttpResponse<R>> {
         return object : LiveData<ApiHttpResponse<R>>() {
-            val started=AtomicBoolean(false)
+            val started = AtomicBoolean(false)
             override fun onActive() {
                 super.onActive()
-                if(started.compareAndSet(false,true)){
-                    call?.enqueue(object :Callback<R>{
+                if (started.compareAndSet(false, true)) {
+                    call?.enqueue(object : Callback<R> {
 
                         override fun onFailure(call: Call<R>?, t: Throwable?) {
-                            postValue(ApiHttpResponse<R>(t!!))
+                            Logger.d("response type $responseType")
+                            Logger.e(t!!, "error ${t.cause}")
+
                         }
 
                         override fun onResponse(call: Call<R>?, response: Response<R>?) {
-                            postValue(ApiHttpResponse<R>(response!!))
+                            Logger.d("onResponse ${response?.body()}")
                         }
 
                     })

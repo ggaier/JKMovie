@@ -29,7 +29,7 @@ class LiveDataCallAdapterFactory : CallAdapter.Factory() {
         }
 
         val bodyType: Type = getParameterUpperBound(0, observableType)
-        return LiveDataCallAdapter<Type>(bodyType)
+        return LiveDataCallAdapter<Any>(bodyType)
 
     }
 
