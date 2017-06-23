@@ -32,6 +32,7 @@ class LiveDataCallAdapter(
                         override fun onFailure(call: Call<ApiHttpResponse<R>>?, t: Throwable?) {
                             Logger.e(
                                     "response type $responseType, onFailure ${t?.printStackTrace()}")
+                            postValue(ApiHttpResponse<R>(t))
                         }
 
                         override fun onResponse(call: Call<ApiHttpResponse<R>>?,
