@@ -37,6 +37,8 @@ class MoviesActivity : LifecycleActivity(), MoviesView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_movies)
+        refresh_layout.setColorSchemeResources(R.color.colorPrimary)
+
         mMoviesModel = ViewModelProviders.of(this).get(MovieListModel::class.java)
         mBinding.isLoading = true
         initRecyclerView()
