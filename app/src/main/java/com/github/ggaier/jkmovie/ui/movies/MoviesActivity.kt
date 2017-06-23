@@ -45,7 +45,7 @@ class MoviesActivity : LifecycleActivity(), MoviesView {
     private fun initRecyclerView() {
         mAdapter = MoviesAdapter(this)
         mBinding.recyclerView.adapter = mAdapter
-        recycler_view.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager
+        recycler_view.layoutManager = GridLayoutManager(this, 1) as RecyclerView.LayoutManager
         recycler_view.addItemDecoration(SpacestemDecoration(dip(4)))
         mMoviesModel.setMovieTag(page = 1)
         mMoviesModel.getMovies().observe(this,
