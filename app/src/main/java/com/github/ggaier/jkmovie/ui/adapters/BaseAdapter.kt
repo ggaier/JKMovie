@@ -20,7 +20,7 @@ abstract class BaseAdapter<T>(
         @LayoutRes defaultLayoutId: Int) : RecyclerView.Adapter<BaseViewHolder>() {
 
     companion object {
-        private val LOAD_MORE_THREADHOLD = 5
+        private val LOAD_MORE_THRESHOLD = 5
         private val VIEW_TYPE_LOAD_MORE = -0xff
         private val VIEW_TYPE_DEFAULT = -0xfe
     }
@@ -62,7 +62,7 @@ abstract class BaseAdapter<T>(
     abstract fun bindDefault(holder: BaseViewHolder?, itemData: T)
 
     private fun notifyLoadMoreEvent(position: Int) {
-        if (position == mDatas.size - LOAD_MORE_THREADHOLD && mOnLoadMoreListener != null) {
+        if (position == mDatas.size - LOAD_MORE_THRESHOLD && mOnLoadMoreListener != null) {
             mOnLoadMoreListener(this)
         }
     }
