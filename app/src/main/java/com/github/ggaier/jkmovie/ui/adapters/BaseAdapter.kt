@@ -72,7 +72,7 @@ abstract class BaseAdapter<T>(
             View.VISIBLE else View.GONE
     }
 
-    private fun shouldShowLoadMore(): Boolean = !mLoadMoreComplete && mLoadMoreFailed
+    private fun shouldShowLoadMore(): Boolean = !mLoadMoreComplete && !mLoadMoreFailed
 
     fun loadMoreFailed() {
         mLoadMoreFailed = true
