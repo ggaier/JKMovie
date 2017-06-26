@@ -11,8 +11,6 @@ import com.github.ggaier.jkmovie.ui.base.ViewIn
  */
 interface MoviesView : ViewIn {
 
-    fun showPopularMovies(movies: List<Video>)
-
 }
 
 interface MoviesPresenterIn {
