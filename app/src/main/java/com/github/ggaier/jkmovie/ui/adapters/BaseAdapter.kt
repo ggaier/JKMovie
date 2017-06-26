@@ -63,6 +63,8 @@ abstract class BaseAdapter<T>(
 
     private fun notifyLoadMoreEvent(position: Int) {
         if (position == mDatas.size - LOAD_MORE_THRESHOLD && mOnLoadMoreListener != null) {
+            mLoadMoreComplete = false
+            mLoadMoreFailed = false
             mOnLoadMoreListener(this)
         }
     }
