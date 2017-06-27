@@ -14,7 +14,6 @@ import com.github.ggaier.jkmovie.ui.adapters.BaseAdapter
 import com.github.ggaier.jkmovie.ui.widget.SpacestemDecoration
 import com.github.ggaier.jkmovie.util.load
 import com.github.ggaier.jkmovie.viewmodel.MovieListModel
-import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.android.synthetic.main.list_item_movie_1.view.*
 import org.jetbrains.anko.dip
@@ -45,12 +44,14 @@ class MoviesActivity : LifecycleActivity(), MoviesView {
         mMoviesModel.setMovieTag(page = mStartPage)
         mAdapter.mOnLoadMoreListener = { mMoviesModel.setMovieTag(page = ++mStartPage) }
         mMoviesModel.getMovies().observe(this,
-                Observer<List<Video>> {
-                    Logger.d("videos are $it , ${it!!::class.java}")
+                Observer<List<Video>?> {
+                    mBinding.isLoading = false
+                    if (it == null || it.isEmpty()) {
+                        return@Observer
+                    }
                     if (mStartPage > 1) {
                         mAdapter.loadMoreComplete()
                     }
-                    mBinding.isLoading = it == null
                     mAdapter.addDatas(it)
                 })
     }
