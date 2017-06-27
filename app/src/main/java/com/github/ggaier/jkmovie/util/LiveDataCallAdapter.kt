@@ -37,7 +37,12 @@ class LiveDataCallAdapter(
 
                         override fun onResponse(call: Call<ApiHttpResponse<R>>?,
                                                 response: Response<ApiHttpResponse<R>>?) {
-                            postValue(response?.body())
+                            if (response?.isSuccessful ?: false) {
+                                postValue(response?.body())
+                            } else {
+                                postValue(ApiHttpResponse<R>(response?.code() ?: 500,
+                                        response?.errorBody()?.string() ?: "Unknown error"))
+                            }
                         }
                     })
                 }

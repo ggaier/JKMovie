@@ -13,7 +13,7 @@ import com.github.ggaier.jkmovie.databinding.ActivityMoviesBinding
 import com.github.ggaier.jkmovie.ui.adapters.BaseAdapter
 import com.github.ggaier.jkmovie.ui.widget.SpacestemDecoration
 import com.github.ggaier.jkmovie.util.load
-import com.github.ggaier.jkmovie.viewmodel.MovieListModel
+import com.github.ggaier.jkmovie.ui.viewmodel.MovieListModel
 import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.android.synthetic.main.list_item_movie_1.view.*
 import org.jetbrains.anko.dip

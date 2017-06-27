@@ -16,9 +16,20 @@ class ApiHttpResponse<T>(val page: Int,
     var mErrorMessage: String = ""
         private set
 
+    init {
+        mCode = if (mResults == null) 500 else 200
+    }
+
     constructor(error: Throwable?) : this(0, 0, 0, null) {
         mCode = 500
         mErrorMessage = error?.message ?: "Unknown Error"
     }
+
+    constructor(code: Int, errorMessage: String) : this(0, 0, 0, null) {
+        mCode = code
+        mErrorMessage = errorMessage
+    }
+
+    fun isSuccessful() = mCode in 200..299
 }
 

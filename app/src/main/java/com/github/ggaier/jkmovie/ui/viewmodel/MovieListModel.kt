@@ -1,4 +1,4 @@
-package com.github.ggaier.jkmovie.viewmodel
+package com.github.ggaier.jkmovie.ui.viewmodel
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
