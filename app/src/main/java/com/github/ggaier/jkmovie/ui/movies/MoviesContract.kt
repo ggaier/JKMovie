@@ -1,7 +1,6 @@
 package com.github.ggaier.jkmovie.ui.movies
 
 import android.arch.lifecycle.LiveData
-import android.graphics.Movie
 import com.github.ggaier.jkmovie.data.vo.Video
 import com.github.ggaier.jkmovie.ui.base.ViewIn
 
@@ -10,6 +9,12 @@ import com.github.ggaier.jkmovie.ui.base.ViewIn
  * jwenbo52@gmail.com
  */
 interface MoviesView : ViewIn {
+
+    /**
+     * display the movies got from data source.
+     * @param movies movies to display
+     */
+    fun showMovies(movies: List<Video>?)
 
 }
 

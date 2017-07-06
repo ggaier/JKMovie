@@ -7,10 +7,10 @@ import com.github.ggaier.jkmovie.api.ApiService
 import com.github.ggaier.jkmovie.data.MoviesRepository
 import com.github.ggaier.jkmovie.data.local.MoviesLocalDataSource
 import com.github.ggaier.jkmovie.data.remote.MoviesRemoteDataSource
+import com.github.ggaier.jkmovie.ui.movies.MovieListPresenter
 import com.github.ggaier.jkmovie.ui.movies.MoviesPresenterIn
 import com.github.ggaier.jkmovie.ui.movies.MoviesView
 import com.github.ggaier.jkmovie.util.LiveDataCallAdapterFactory
-import com.github.ggaier.jkmovie.ui.viewmodel.MovieListModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -27,7 +27,6 @@ object Injections {
         private set
 
     init {
-
         val client = OkHttpClient.Builder()
         client.addInterceptor(ApiInterceptor())
                 .addInterceptor(
@@ -41,13 +40,16 @@ object Injections {
                 .create(ApiService::class.java)
     }
 
+    /**
+     * call this method at the very start of the app.
+     */
     fun init(application: Application) {
         mApplication = application
     }
 
 
     fun getMoviesPresenter(movieView: MoviesView): MoviesPresenterIn {
-        return MovieListModel(mApplication)
+        return MovieListPresenter(movieView, mApplication)
     }
 
     fun getMoviesRepo(): MoviesRepository {

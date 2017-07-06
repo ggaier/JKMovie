@@ -40,7 +40,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs', module: 'jsr305'
     })
-    testCompile 'junit:junit:4.12'
 
     compile "com.android.support:appcompat-v7:$support_version"
     compile "com.android.support.constraint:constraint-layout:$constraint_layout_version"
@@ -80,6 +79,8 @@ dependencies {
 
     compile "com.orhanobut:logger:${logger_version}"
 
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
 }
 
 configurations.all {
