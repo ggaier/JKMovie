@@ -1,6 +1,8 @@
 package com.github.ggaier.jkmovie.di
 
 import android.app.Application
+import android.arch.lifecycle.LifecycleActivity
+import android.arch.lifecycle.ViewModelProviders
 import com.github.ggaier.jkmovie.TMDB_BASE_URL
 import com.github.ggaier.jkmovie.api.ApiInterceptor
 import com.github.ggaier.jkmovie.api.ApiService
@@ -48,8 +50,8 @@ object Injections {
     }
 
 
-    fun getMoviesPresenter(movieView: MoviesView): MoviesPresenterIn {
-        return MovieListPresenter(movieView, mApplication)
+    fun getMoviesPresenter(moviesView: MoviesView): MoviesPresenterIn {
+        return ViewModelProviders.of(moviesView.mLifecycleOwner as LifecycleActivity).get(MovieListPresenter::class.java)
     }
 
     fun getMoviesRepo(): MoviesRepository {
