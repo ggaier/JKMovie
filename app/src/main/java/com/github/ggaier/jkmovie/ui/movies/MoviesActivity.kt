@@ -2,7 +2,6 @@ package com.github.ggaier.jkmovie.ui.movies
 
 import android.arch.lifecycle.LifecycleActivity
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -10,6 +9,7 @@ import android.support.v7.widget.RecyclerView
 import com.github.ggaier.jkmovie.R
 import com.github.ggaier.jkmovie.data.vo.Video
 import com.github.ggaier.jkmovie.databinding.ActivityMoviesBinding
+import com.github.ggaier.jkmovie.di.Injections
 import com.github.ggaier.jkmovie.ui.adapters.BaseAdapter
 import com.github.ggaier.jkmovie.ui.widget.SpacestemDecoration
 import com.github.ggaier.jkmovie.util.load
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.android.synthetic.main.list_item_movie_1.view.*
 import org.jetbrains.anko.dip
 
-class MoviesActivity : LifecycleActivity(){
+class MoviesActivity : LifecycleActivity() {
 
     lateinit var mAdapter: MoviesAdapter
     lateinit var mMoviesModel: MovieListPresenter
@@ -27,7 +27,7 @@ class MoviesActivity : LifecycleActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_movies)
-        mMoviesModel = ViewModelProviders.of(this).get(MovieListPresenter::class.java)
+        mMoviesModel = Injections.getMoviesPresenter(this)
 
         refresh_layout.setColorSchemeResources(R.color.colorPrimary)
         mBinding.isLoading = true
