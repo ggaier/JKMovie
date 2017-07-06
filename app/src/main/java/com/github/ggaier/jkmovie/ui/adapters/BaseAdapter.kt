@@ -17,7 +17,10 @@ import kotlinx.android.synthetic.main.list_item_load_more.view.*
  */
 abstract class BaseAdapter<T>(
         val mDatas: MutableList<T> = mutableListOf(),
-        @LayoutRes defaultLayoutId: Int) : RecyclerView.Adapter<BaseViewHolder>() {
+        @LayoutRes defaultLayoutId: Int,
+        val mListener: (adapter: BaseAdapter<T>, position: Int) -> Unit)
+    : RecyclerView.Adapter<BaseViewHolder>() {
+
 
     companion object {
         private val LOAD_MORE_THRESHOLD = 5
@@ -37,6 +40,7 @@ abstract class BaseAdapter<T>(
 
     override fun onBindViewHolder(holder: BaseViewHolder?, position: Int) {
         notifyLoadMoreEvent(position)
+        holder?.itemView?.setOnClickListener { mListener(this, holder?.adapterPosition) }
         when (getItemViewType(position)) {
             VIEW_TYPE_DEFAULT -> bindDefault(holder, mDatas[position])
             VIEW_TYPE_LOAD_MORE -> showLoadMore(holder)

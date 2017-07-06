@@ -1,5 +1,7 @@
 package com.github.ggaier.jkmovie.data.vo
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.github.ggaier.jkmovie.TMDB_IMAGE_BASE_URL
 import com.google.gson.annotations.SerializedName
 
@@ -20,7 +22,13 @@ data class Video(val id: String,
                  @SerializedName("backdrop_path") private val backdropPath: String,
                  @SerializedName("adult") val isAdult: Boolean,
                  val overview: String,
-                 @SerializedName("release_date") val releaseDate: String) {
+                 @SerializedName("release_date") val releaseDate: String):Parcelable {
+
+    override fun writeToParcel(dest: Parcel?, flags: Int) {
+    }
+
+    override fun describeContents(): Int {
+    }
 
     val realBackdropPath: String
         get() {

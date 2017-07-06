@@ -2,6 +2,7 @@ package com.github.ggaier.jkmovie.ui.movies
 
 import android.arch.lifecycle.LifecycleActivity
 import android.arch.lifecycle.Observer
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -11,6 +12,7 @@ import com.github.ggaier.jkmovie.data.vo.Video
 import com.github.ggaier.jkmovie.databinding.ActivityMoviesBinding
 import com.github.ggaier.jkmovie.di.Injections
 import com.github.ggaier.jkmovie.ui.adapters.BaseAdapter
+import com.github.ggaier.jkmovie.ui.details.MovieDetailsActivity
 import com.github.ggaier.jkmovie.ui.widget.SpacestemDecoration
 import com.github.ggaier.jkmovie.util.load
 import kotlinx.android.synthetic.main.activity_movies.*
@@ -36,7 +38,11 @@ class MoviesActivity : LifecycleActivity() {
 
 
     private fun initRecyclerView() {
-        mAdapter = MoviesAdapter(this)
+        mAdapter = MoviesAdapter(this,{adapter,position->
+            val intent=Intent(this,MovieDetailsActivity::class.java)
+            intent.putExtra("data",adapter.mDatas[position])
+            startActivity(intent)
+        })
         mBinding.recyclerView.adapter = mAdapter
         recycler_view.layoutManager = GridLayoutManager(this, 1) as RecyclerView.LayoutManager
         recycler_view.addItemDecoration(SpacestemDecoration(dip(4)))
@@ -57,8 +63,9 @@ class MoviesActivity : LifecycleActivity() {
     }
 
     class MoviesAdapter(val activity: MoviesActivity,
-                        layoutResId: Int = R.layout.list_item_movie_1) :
-            BaseAdapter<Video>(defaultLayoutId = layoutResId) {
+                        listener: (adapter: BaseAdapter<Video>, position: Int) -> Unit)
+        : BaseAdapter<Video>(defaultLayoutId = R.layout.list_item_movie_1, mListener = listener) {
+
 
         override fun bindDefault(holder: BaseViewHolder?, itemData: Video) {
             holder?.itemView?.poster?.load(activity, itemData.realBackdropPath)
