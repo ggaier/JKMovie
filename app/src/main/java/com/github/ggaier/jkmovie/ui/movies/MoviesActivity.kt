@@ -1,8 +1,6 @@
 package com.github.ggaier.jkmovie.ui.movies
 
-import android.arch.lifecycle.LifecycleActivity
 import android.arch.lifecycle.Observer
-import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -11,6 +9,7 @@ import com.github.ggaier.jkmovie.R
 import com.github.ggaier.jkmovie.data.vo.Video
 import com.github.ggaier.jkmovie.databinding.ActivityMoviesBinding
 import com.github.ggaier.jkmovie.di.Injections
+import com.github.ggaier.jkmovie.ui.activity.BaseActivity
 import com.github.ggaier.jkmovie.ui.adapters.BaseAdapter
 import com.github.ggaier.jkmovie.ui.details.MovieDetailsActivity
 import com.github.ggaier.jkmovie.ui.widget.SpacestemDecoration
@@ -19,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.android.synthetic.main.list_item_movie_1.view.*
 import org.jetbrains.anko.dip
 
-class MoviesActivity : LifecycleActivity() {
+class MoviesActivity : BaseActivity() {
 
     lateinit var mAdapter: MoviesAdapter
     lateinit var mMoviesModel: MovieListPresenter
@@ -38,10 +37,8 @@ class MoviesActivity : LifecycleActivity() {
 
 
     private fun initRecyclerView() {
-        mAdapter = MoviesAdapter(this,{adapter,position->
-            val intent=Intent(this,MovieDetailsActivity::class.java)
-            intent.putExtra("data",adapter.mDatas[position])
-            startActivity(intent)
+        mAdapter = MoviesAdapter(this, { adapter, position ->
+            MovieDetailsActivity.show(this, adapter.mDatas[position])
         })
         mBinding.recyclerView.adapter = mAdapter
         recycler_view.layoutManager = GridLayoutManager(this, 1) as RecyclerView.LayoutManager
