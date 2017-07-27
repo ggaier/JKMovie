@@ -6,10 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textColorPrimary">@color/white_primary</item>
     </style>
 
     <style name="JKMovieTheme.Toolbar" parent="Widget.AppCompat.Toolbar">
-        <item name="android:textColor">@color/white_primary</item>
     </style>
 
     <style name="TextAppearance.Primary" parent="">
