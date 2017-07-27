@@ -10,6 +10,7 @@ import com.github.ggaier.jkmovie.data.vo.Video
 import com.github.ggaier.jkmovie.databinding.ActivityMovieDetailsBinding
 import com.github.ggaier.jkmovie.ui.activity.BaseActivity
 import com.github.ggaier.jkmovie.util.load
+import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.activity_movie_details.*
 
 class MovieDetailsActivity : BaseActivity() {
@@ -40,6 +41,7 @@ class MovieDetailsActivity : BaseActivity() {
 
     override fun onStart() {
         super.onStart()
+        Logger.d("poster path ${mMovie.realPosterPath}")
         video_poster.load(this, mMovie.realPosterPath)
     }
 
