@@ -9,6 +9,8 @@ import com.github.ggaier.jkmovie.R
 import com.github.ggaier.jkmovie.data.vo.Video
 import com.github.ggaier.jkmovie.databinding.ActivityMovieDetailsBinding
 import com.github.ggaier.jkmovie.ui.activity.BaseActivity
+import com.github.ggaier.jkmovie.util.load
+import kotlinx.android.synthetic.main.activity_movie_details.*
 
 class MovieDetailsActivity : BaseActivity() {
 
@@ -26,10 +28,19 @@ class MovieDetailsActivity : BaseActivity() {
     }
 
     private lateinit var mBinding: ActivityMovieDetailsBinding
+    private lateinit var mMovie: Video
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details)
-        mBinding.movie = intent.getParcelableExtra<Video>(INTENT_EXTRA_DATA)
+        mMovie = intent.getParcelableExtra<Video>(INTENT_EXTRA_DATA)
+        setActivityActionBar(toolbar, title = mMovie.title)
+        mBinding.movie = mMovie
     }
+
+    override fun onStart() {
+        super.onStart()
+        video_poster.load(this, mMovie.realBackdropPath);
+    }
+
 }

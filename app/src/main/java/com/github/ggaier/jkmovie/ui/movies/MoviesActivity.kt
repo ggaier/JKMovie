@@ -29,7 +29,6 @@ class MoviesActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_movies)
         mMoviesModel = Injections.getMoviesPresenter(this)
-
         refresh_layout.setColorSchemeResources(R.color.colorPrimary)
         mBinding.isLoading = true
         initRecyclerView()
