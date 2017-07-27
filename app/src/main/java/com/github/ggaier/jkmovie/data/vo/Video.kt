@@ -15,7 +15,7 @@ data class Video(val id: String?,
                  @SerializedName("vote_average") val voteAverage: Float,
                  val title: String,
                  val popularity: Float,
-                 @SerializedName("post_path") val postPath: String?,
+                 @SerializedName("post_path") val posterPath: String?,
                  @SerializedName("original_language") val originalLanguage: String?,
                  @SerializedName("original_title") val originalTitle: String,
                  @SerializedName("genre_ids") val genreIds: Array<String>,
@@ -27,6 +27,11 @@ data class Video(val id: String?,
     val realBackdropPath: String
         get() {
             return TMDB_IMAGE_BASE_URL.plus(backdropPath)
+        }
+
+    val realPosterPath: String
+        get() {
+            return TMDB_IMAGE_BASE_URL + posterPath
         }
 
     companion object {
@@ -65,7 +70,7 @@ data class Video(val id: String?,
         dest.writeFloat(voteAverage)
         dest.writeString(title)
         dest.writeFloat(popularity)
-        dest.writeString(postPath)
+        dest.writeString(posterPath)
         dest.writeString(originalLanguage)
         dest.writeString(originalTitle)
         dest.writeStringArray(genreIds)

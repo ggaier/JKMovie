@@ -40,7 +40,7 @@ class MovieDetailsActivity : BaseActivity() {
 
     override fun onStart() {
         super.onStart()
-        video_poster.load(this, mMovie.realBackdropPath);
+        video_poster.load(this, mMovie.realPosterPath)
     }
 
 }
