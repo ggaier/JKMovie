@@ -25,4 +25,9 @@ abstract class BaseActivity : LifecycleActivity() {
         actionBar?.setHomeAsUpIndicator(homeAsUpIndicator)
     }
 
+    override fun onNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
 }
