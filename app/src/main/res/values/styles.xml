@@ -10,6 +10,13 @@
         <item name="android:textColorPrimary">@color/white_primary</item>
     </style>
 
+    <style name="JKMovieTheme.FullScreen">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
     <style name="JKMovieTheme.Toolbar" parent="Widget.AppCompat.Toolbar">
     </style>
 
