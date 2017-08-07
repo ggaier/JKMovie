@@ -22,15 +22,36 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-        <android.support.design.widget.CoordinatorLayout
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nested_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{movie.originalTitle}"/>
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:fitsSystemWindows="true">
 
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/tranparent"
+                android:background="@null"
                 android:fitsSystemWindows="true">
 
                 <android.support.design.widget.CollapsingToolbarLayout
@@ -57,25 +78,6 @@
                 </android.support.design.widget.CollapsingToolbarLayout>
             </android.support.design.widget.AppBarLayout>
 
-            <android.support.v4.widget.NestedScrollView
-                android:id="@+id/nested_scroll_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{movie.originalTitle}"/>
-
-                </LinearLayout>
-
-            </android.support.v4.widget.NestedScrollView>
         </android.support.design.widget.CoordinatorLayout>
     </FrameLayout>
 </layout>
