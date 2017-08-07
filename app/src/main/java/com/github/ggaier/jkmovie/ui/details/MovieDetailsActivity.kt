@@ -41,8 +41,9 @@ class MovieDetailsActivity : BaseActivity() {
 
     override fun onStart() {
         super.onStart()
-        Logger.d("poster path ${mMovie.realPosterPath}")
         video_poster.load(this, mMovie.realPosterPath)
     }
+
+
 
 }

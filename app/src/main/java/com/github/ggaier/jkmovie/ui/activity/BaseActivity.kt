@@ -3,8 +3,9 @@ package com.github.ggaier.jkmovie.ui.activity
 import android.arch.lifecycle.LifecycleActivity
 import android.os.Bundle
 import android.support.annotation.DrawableRes
-import android.widget.Toolbar
+import android.support.v7.widget.Toolbar
 import com.github.ggaier.jkmovie.R
+import org.jetbrains.anko.appcompat.v7.navigationIconResource
 
 /**
  * Created by ggaier
@@ -19,15 +20,12 @@ abstract class BaseActivity : LifecycleActivity() {
     fun setActivityActionBar(toolbar: Toolbar, homeAsUp: Boolean = true,
                              @DrawableRes homeAsUpIndicator: Int = R.drawable.ic_arrow_back,
                              title: String = "") {
-        setActionBar(toolbar)
-        actionBar?.title = title
-        actionBar?.setDisplayHomeAsUpEnabled(homeAsUp)
-        actionBar?.setHomeAsUpIndicator(homeAsUpIndicator)
+        toolbar.navigationIconResource = homeAsUpIndicator
+        toolbar.setNavigationOnClickListener { if (homeAsUp) finish() else onNavigationIconClicked() }
+        toolbar.title = title
     }
 
-    override fun onNavigateUp(): Boolean {
-        finish()
-        return true
-    }
+    fun onNavigationIconClicked() {}
+
 
 }

@@ -24,25 +24,31 @@
 
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
+            android:fitsSystemWindows="true"
             android:layout_height="wrap_content">
 
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
+                android:fitsSystemWindows="true"
                 android:layout_height="wrap_content">
 
                 <android.support.design.widget.CollapsingToolbarLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:title="@{movie.title}"
+                    app:expandedTitleGravity="center"
+                    app:toolbarId="@+id/toolbar"
+                    android:fitsSystemWindows="true"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                    <Toolbar
+                    <android.support.v7.widget.Toolbar
                         android:id="@+id/toolbar"
                         style="@style/JKMovieTheme.Toolbar"
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         app:layout_collapseMode="pin"
                         app:navigationIcon="@drawable/ic_arrow_back"
-                        app:title="@{movie.title}"/>
+                        />
 
 
                 </android.support.design.widget.CollapsingToolbarLayout>
