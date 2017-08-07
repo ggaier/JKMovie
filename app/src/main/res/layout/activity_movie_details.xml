@@ -24,22 +24,25 @@
 
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:fitsSystemWindows="true"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
 
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
-                android:fitsSystemWindows="true"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@android:color/tranparent"
+                android:fitsSystemWindows="true">
 
                 <android.support.design.widget.CollapsingToolbarLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:title="@{movie.title}"
-                    app:expandedTitleGravity="center"
-                    app:toolbarId="@+id/toolbar"
+                    android:layout_height="256dp"
                     android:fitsSystemWindows="true"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                    app:collapsedTitleGravity="left"
+                    app:expandedTitleGravity="center"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    app:title="@{movie.title}"
+                    app:titleEnabled="true"
+                    app:toolbarId="@+id/toolbar">
 
                     <android.support.v7.widget.Toolbar
                         android:id="@+id/toolbar"
