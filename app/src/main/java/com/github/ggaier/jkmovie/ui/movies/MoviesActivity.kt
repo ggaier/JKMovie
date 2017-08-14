@@ -12,7 +12,7 @@ import com.github.ggaier.jkmovie.di.Injections
 import com.github.ggaier.jkmovie.ui.activity.BaseActivity
 import com.github.ggaier.jkmovie.ui.adapters.BaseAdapter
 import com.github.ggaier.jkmovie.ui.details.MovieDetailsActivity
-import com.github.ggaier.jkmovie.ui.widget.SpacestemDecoration
+import com.github.ggaier.jkmovie.ui.widget.SpacesItemDecoration
 import com.github.ggaier.jkmovie.util.load
 import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.android.synthetic.main.list_item_movie_1.view.*
@@ -41,7 +41,7 @@ class MoviesActivity : BaseActivity() {
         })
         mBinding.recyclerView.adapter = mAdapter
         recycler_view.layoutManager = GridLayoutManager(this, 1) as RecyclerView.LayoutManager
-        recycler_view.addItemDecoration(SpacestemDecoration(dip(4)))
+        recycler_view.addItemDecoration(SpacesItemDecoration(dip(4)))
         mMoviesModel.setMovieTag(page = mStartPage)
         mAdapter.mOnLoadMoreListener = { mMoviesModel.setMovieTag(page = ++mStartPage) }
 

@@ -8,7 +8,7 @@ import android.view.View
  * Created by ggaier
  * jwenbo52@gmail.com
  */
-class SpacestemDecoration internal constructor(private val mSpace: Int) :
+class SpacesItemDecoration internal constructor(private val mSpace: Int) :
         RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?,

@@ -10,7 +10,6 @@ import com.github.ggaier.jkmovie.data.vo.Video
 import com.github.ggaier.jkmovie.databinding.ActivityMovieDetailsBinding
 import com.github.ggaier.jkmovie.ui.activity.BaseActivity
 import com.github.ggaier.jkmovie.util.load
-import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.activity_movie_details.*
 
 class MovieDetailsActivity : BaseActivity() {
@@ -32,6 +31,8 @@ class MovieDetailsActivity : BaseActivity() {
     private lateinit var mMovie: Video
 
     override fun onCreate(savedInstanceState: Bundle?) {
+//        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+//                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details)
         mMovie = intent.getParcelableExtra<Video>(INTENT_EXTRA_DATA)
@@ -43,7 +44,6 @@ class MovieDetailsActivity : BaseActivity() {
         super.onStart()
         video_poster.load(this, mMovie.realPosterPath)
     }
-
 
 
 }
