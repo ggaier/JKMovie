@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.view.WindowManager
 import com.github.ggaier.jkmovie.BuildConfig
 import com.github.ggaier.jkmovie.R
 import com.github.ggaier.jkmovie.data.vo.Video
@@ -31,8 +32,8 @@ class MovieDetailsActivity : BaseActivity() {
     private lateinit var mMovie: Video
 
     override fun onCreate(savedInstanceState: Bundle?) {
-//        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-//                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details)
         mMovie = intent.getParcelableExtra<Video>(INTENT_EXTRA_DATA)

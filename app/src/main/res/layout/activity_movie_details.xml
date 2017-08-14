@@ -19,7 +19,6 @@
         <ImageView
             android:id="@+id/video_poster"
             android:layout_width="match_parent"
-            android:fitsSystemWindows="true"
             android:layout_height="match_parent"/>
 
         <android.support.design.widget.AppBarLayout
@@ -32,9 +31,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:expandedTitleGravity="center"
-                android:fitsSystemWindows="true"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:title="@{movie.title}"
+                android:fitsSystemWindows="true"
                 app:contentScrim="@android:color/transparent">
 
                 <android.support.v7.widget.Toolbar
@@ -42,6 +41,7 @@
                     style="@style/JKMovieTheme.Toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
+                    android:fitsSystemWindows="true"
                     app:layout_collapseMode="pin"
                     app:navigationIcon="@drawable/ic_arrow_back"
                     />
