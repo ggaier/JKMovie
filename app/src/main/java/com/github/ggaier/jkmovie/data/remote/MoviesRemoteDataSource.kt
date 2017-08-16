@@ -19,7 +19,6 @@ class MoviesRemoteDataSource(val mApiService: ApiService) : MoviesDataSource {
         val apiResponseLiveData: LiveData<ApiHttpResponse<List<Video>>> = mApiService
                 .fetchPopularMovies(language, page, region)
         return Transformations.map(apiResponseLiveData, { it.mResults })
-
     }
 
 }

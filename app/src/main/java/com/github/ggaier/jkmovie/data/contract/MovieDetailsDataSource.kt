@@ -10,12 +10,12 @@ import com.github.ggaier.jkmovie.data.vo.Video
 interface MovieDetailsDataSource {
 
     /**
-     * Get movie details by movie id, and the language parameter can use to filer the
+     * Get movie details by movie id [movieId], and the [language] parameter can use to filer the
      * details.
      * @param movieId id of the movie
      * @param language
-     * @param appendToResponse <a href="https://developers.themoviedb
-     * .org/3/getting-started/append-to-response">Append To Response Details</a>
+     * @param appendToResponse  [Append To Response Details](https://developers.themoviedb
+     * .org/3/getting-started/append-to-response)
      */
     fun getMovieDetails(movieId: String, language: String?, appendToResponse: String?):
             LiveData<Video>
