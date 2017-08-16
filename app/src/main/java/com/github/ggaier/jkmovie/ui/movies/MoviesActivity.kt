@@ -21,7 +21,7 @@ import org.jetbrains.anko.dip
 class MoviesActivity : BaseActivity() {
 
     lateinit var mAdapter: MoviesAdapter
-    lateinit var mMoviesModel: MovieListPresenter
+    lateinit var mMoviesModel: MovieListViewModel
     lateinit var mBinding: ActivityMoviesBinding
     private var mStartPage: Int = 1
 

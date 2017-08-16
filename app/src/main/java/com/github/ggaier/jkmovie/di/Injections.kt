@@ -9,7 +9,7 @@ import com.github.ggaier.jkmovie.api.ApiService
 import com.github.ggaier.jkmovie.data.MoviesRepository
 import com.github.ggaier.jkmovie.data.local.MoviesLocalDataSource
 import com.github.ggaier.jkmovie.data.remote.MoviesRemoteDataSource
-import com.github.ggaier.jkmovie.ui.movies.MovieListPresenter
+import com.github.ggaier.jkmovie.ui.movies.MovieListViewModel
 import com.github.ggaier.jkmovie.util.LiveDataCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -48,8 +48,8 @@ object Injections {
     }
 
 
-    fun getMoviesPresenter(lifecycleActivity: LifecycleActivity): MovieListPresenter {
-        return ViewModelProviders.of(lifecycleActivity).get(MovieListPresenter::class.java)
+    fun getMoviesPresenter(lifecycleActivity: LifecycleActivity): MovieListViewModel {
+        return ViewModelProviders.of(lifecycleActivity).get(MovieListViewModel::class.java)
     }
 
     fun getMoviesRepo(): MoviesRepository {

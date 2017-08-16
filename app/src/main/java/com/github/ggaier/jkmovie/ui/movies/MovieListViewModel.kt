@@ -13,7 +13,7 @@ import com.github.ggaier.jkmovie.di.Injections
  * Created by ggaier
  * jwenbo52@gmail.com
  */
-class MovieListPresenter(application: Application?) : AndroidViewModel(application) {
+class MovieListViewModel(application: Application?) : AndroidViewModel(application) {
 
     val mMoviesRepository: MoviesRepository = Injections.getMoviesRepo()
     private val mObservableTags = MutableLiveData<MovieTag>()

@@ -13,13 +13,19 @@ interface ApiService {
 
 
     /**
-     * 根据地区和语言获取对应的热门电影。
+     * Get popular movies based on language and region .
      */
     @GET("movie/popular")
     fun fetchPopularMovies(@Query("language") language: String?,
                            @Query("page") page: Int,
                            @Query("region") region: String?):
             LiveData<ApiHttpResponse<List<Video>>>
+
+
+    /**
+     * Get movie details by movie id.
+     */
+    fun fetchMovieDetails():LiveData<ApiHttpResponse<Video>>
 
 
 }
