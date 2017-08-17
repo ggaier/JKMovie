@@ -6,8 +6,10 @@ import android.arch.lifecycle.ViewModelProviders
 import com.github.ggaier.jkmovie.TMDB_BASE_URL
 import com.github.ggaier.jkmovie.api.ApiInterceptor
 import com.github.ggaier.jkmovie.api.ApiService
-import com.github.ggaier.jkmovie.data.MoviesRepository
+import com.github.ggaier.jkmovie.data.MovieInfoRepo
+import com.github.ggaier.jkmovie.data.MoviesRepo
 import com.github.ggaier.jkmovie.data.local.MoviesLocalDataSource
+import com.github.ggaier.jkmovie.data.remote.MovieInfoRemoteDataSource
 import com.github.ggaier.jkmovie.data.remote.MoviesRemoteDataSource
 import com.github.ggaier.jkmovie.ui.movies.MovieListViewModel
 import com.github.ggaier.jkmovie.util.LiveDataCallAdapterFactory
@@ -52,8 +54,8 @@ object Injections {
         return ViewModelProviders.of(lifecycleActivity).get(MovieListViewModel::class.java)
     }
 
-    fun getMoviesRepo(): MoviesRepository {
-        return MoviesRepository(MoviesRemoteDataSource(mApiService), MoviesLocalDataSource())
-    }
+    fun getMoviesRepo() = MoviesRepo(MoviesRemoteDataSource(mApiService),
+            MoviesLocalDataSource())
 
+    fun getMovieInfoRepo() = MovieInfoRepo(MovieInfoRemoteDataSource(mApiService))
 }

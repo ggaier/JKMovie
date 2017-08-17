@@ -1,4 +1,4 @@
-package com.github.ggaier.jkmovie.ui.details
+package com.github.ggaier.jkmovie.ui.movieinfo
 
 import android.content.Context
 import android.content.Intent

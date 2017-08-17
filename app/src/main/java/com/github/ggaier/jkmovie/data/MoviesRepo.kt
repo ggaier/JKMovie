@@ -10,8 +10,8 @@ import com.github.ggaier.jkmovie.data.vo.Video
  * Created by ggaier
  * jwenbo52@gmail.com
  */
-class MoviesRepository(private val mRemoteDS: MoviesRemoteDataSource,
-                       private val mLocalDS: MoviesLocalDataSource) : MoviesDataSource {
+class MoviesRepo(private val mRemoteDS: MoviesRemoteDataSource,
+                 private val mLocalDS: MoviesLocalDataSource) : MoviesDataSource {
 
 
     override fun getPopularMovies(language: String, page: Int,

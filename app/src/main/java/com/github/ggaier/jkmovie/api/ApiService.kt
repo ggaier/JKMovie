@@ -26,9 +26,9 @@ interface ApiService {
      * Get movie details by movie id.
      */
     @GET("movie/{movie_id}")
-    fun fetchMovieDetails(@Path("movie_id") movieId: String,
-                          @Query("language") language: String?,
-                          @Query("append_to_response") appendToResponse: String?): LiveData<ApiHttpResponse<Video>>
+    fun fetchMovieInfo(@Path("movie_id") movieId: String,
+                       @Query("language") language: String?,
+                       @Query("append_to_response") appendToResponse: String?): LiveData<ApiHttpResponse<Video>>
 
 
 }

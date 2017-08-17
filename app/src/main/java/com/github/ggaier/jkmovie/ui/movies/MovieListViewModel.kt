@@ -5,7 +5,7 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
-import com.github.ggaier.jkmovie.data.MoviesRepository
+import com.github.ggaier.jkmovie.data.MoviesRepo
 import com.github.ggaier.jkmovie.data.vo.Video
 import com.github.ggaier.jkmovie.di.Injections
 
@@ -15,7 +15,7 @@ import com.github.ggaier.jkmovie.di.Injections
  */
 class MovieListViewModel(application: Application?) : AndroidViewModel(application) {
 
-    val mMoviesRepository: MoviesRepository = Injections.getMoviesRepo()
+    val mMoviesRepository: MoviesRepo = Injections.getMoviesRepo()
     private val mObservableTags = MutableLiveData<MovieTag>()
 
     init {

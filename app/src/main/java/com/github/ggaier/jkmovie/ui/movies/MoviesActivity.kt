@@ -11,7 +11,7 @@ import com.github.ggaier.jkmovie.databinding.ActivityMoviesBinding
 import com.github.ggaier.jkmovie.di.Injections
 import com.github.ggaier.jkmovie.ui.activity.BaseActivity
 import com.github.ggaier.jkmovie.ui.adapters.BaseAdapter
-import com.github.ggaier.jkmovie.ui.details.MovieDetailsActivity
+import com.github.ggaier.jkmovie.ui.movieinfo.MovieDetailsActivity
 import com.github.ggaier.jkmovie.ui.widget.SpacesItemDecoration
 import com.github.ggaier.jkmovie.util.load
 import kotlinx.android.synthetic.main.activity_movies.*
