@@ -14,8 +14,7 @@ class MovieInfoRemoteDataSource(val mApiService: ApiService) : MovieInfoDataSour
 
     override fun getMovieInfo(movieId: String, language: String?,
                               appendToResponse: String?): LiveData<Video> {
-        return Transformations.map(mApiService.fetchMovieInfo(movieId, language,
-                appendToResponse), { it.mResults })
+        return mApiService.fetchMovieInfo(movieId, language, appendToResponse)
     }
 
 }
