@@ -11,6 +11,7 @@ import com.github.ggaier.jkmovie.data.MoviesRepo
 import com.github.ggaier.jkmovie.data.local.MoviesLocalDataSource
 import com.github.ggaier.jkmovie.data.remote.MovieInfoRemoteDataSource
 import com.github.ggaier.jkmovie.data.remote.MoviesRemoteDataSource
+import com.github.ggaier.jkmovie.ui.movieinfo.MovieInfoViewModel
 import com.github.ggaier.jkmovie.ui.movies.MovieListViewModel
 import com.github.ggaier.jkmovie.util.LiveDataCallAdapterFactory
 import okhttp3.OkHttpClient
@@ -50,7 +51,7 @@ object Injections {
     }
 
 
-    fun getMoviesPresenter(lifecycleActivity: LifecycleActivity): MovieListViewModel {
+    fun getMoviesViewModel(lifecycleActivity: LifecycleActivity): MovieListViewModel {
         return ViewModelProviders.of(lifecycleActivity).get(MovieListViewModel::class.java)
     }
 
@@ -58,4 +59,7 @@ object Injections {
             MoviesLocalDataSource())
 
     fun getMovieInfoRepo() = MovieInfoRepo(MovieInfoRemoteDataSource(mApiService))
+
+    fun getMovieInfoViewModel(activity: LifecycleActivity) = ViewModelProviders
+            .of(activity).get(MovieInfoViewModel::class.java)!!
 }

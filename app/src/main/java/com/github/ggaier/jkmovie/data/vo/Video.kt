@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
  * Created by ggaier
  * jwenbo52@gmail.com
  */
-data class Video(val id: String?,
+data class Video(val id: String,
                  @SerializedName("vote_count") val voteCount: Int,
                  val isVideo: Boolean,
                  @SerializedName("vote_average") val voteAverage: Float,
