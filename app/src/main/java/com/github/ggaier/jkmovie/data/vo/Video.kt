@@ -22,7 +22,8 @@ data class Video(val id: String,
                  @SerializedName("backdrop_path") private val backdropPath: String,
                  @SerializedName("adult") val isAdult: Boolean,
                  val overview: String,
-                 @SerializedName("release_date") val releaseDate: String) : Parcelable {
+                 @SerializedName("release_date") val releaseDate: String) :
+        Parcelable {
 
     val realBackdropPath: String
         get() {

@@ -1,7 +1,7 @@
 package com.github.ggaier.jkmovie.util
 
 import android.arch.lifecycle.LiveData
-import com.github.ggaier.jkmovie.api.ApiHttpResponse
+import com.github.ggaier.jkmovie.data.vo.VideosWrapper
 import retrofit2.CallAdapter
 import retrofit2.Retrofit
 import java.lang.reflect.ParameterizedType
@@ -20,7 +20,7 @@ class LiveDataCallAdapterFactory : CallAdapter.Factory() {
         }
         val observableType = getParameterUpperBound(0, returnType as? ParameterizedType)
         val rawObservableType = getRawType(observableType)
-        if (rawObservableType != ApiHttpResponse::class.java) {
+        if (rawObservableType != VideosWrapper::class.java) {
             throw IllegalArgumentException(" type must be a resource")
         }
 

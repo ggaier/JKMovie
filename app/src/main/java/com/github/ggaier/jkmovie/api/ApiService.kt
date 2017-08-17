@@ -2,6 +2,7 @@ package com.github.ggaier.jkmovie.api
 
 import android.arch.lifecycle.LiveData
 import com.github.ggaier.jkmovie.data.vo.Video
+import com.github.ggaier.jkmovie.data.vo.VideosWrapper
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -19,7 +20,8 @@ interface ApiService {
     @GET("movie/popular")
     fun fetchPopularMovies(@Query("language") language: String?,
                            @Query("page") page: Int,
-                           @Query("region") region: String?): LiveData<ApiHttpResponse<List<Video>>>
+                           @Query("region") region: String?):
+            LiveData<VideosWrapper>
 
 
     /**
@@ -28,7 +30,8 @@ interface ApiService {
     @GET("movie/{movie_id}")
     fun fetchMovieInfo(@Path("movie_id") movieId: String,
                        @Query("language") language: String?,
-                       @Query("append_to_response") appendToResponse: String?): LiveData<ApiHttpResponse<Video>>
+                       @Query("append_to_response") appendToResponse: String?):
+            LiveData<Video>
 
 
 }
