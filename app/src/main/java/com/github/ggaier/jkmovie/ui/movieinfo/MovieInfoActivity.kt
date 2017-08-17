@@ -11,9 +11,9 @@ import com.github.ggaier.jkmovie.data.vo.Video
 import com.github.ggaier.jkmovie.databinding.ActivityMovieDetailsBinding
 import com.github.ggaier.jkmovie.ui.activity.BaseActivity
 import com.github.ggaier.jkmovie.util.load
-import kotlinx.android.synthetic.main.activity_movie_details.*
+import kotlinx.android.synthetic.main.activity_movie_info.*
 
-class MovieDetailsActivity : BaseActivity() {
+class MovieInfoActivity : BaseActivity() {
 
     companion object {
 
@@ -22,7 +22,7 @@ class MovieDetailsActivity : BaseActivity() {
 
         @JvmStatic
         fun show(context: Context, video: Video) {
-            val intent = Intent(context, MovieDetailsActivity::class.java)
+            val intent = Intent(context, MovieInfoActivity::class.java)
             intent.putExtra(INTENT_EXTRA_DATA, video)
             context.startActivity(intent)
         }
@@ -35,11 +35,13 @@ class MovieDetailsActivity : BaseActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         super.onCreate(savedInstanceState)
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details)
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_movie_info)
         mMovie = intent.getParcelableExtra<Video>(INTENT_EXTRA_DATA)
         setActivityActionBar(toolbar, title = mMovie.title)
         mBinding.movie = mMovie
+
     }
+
 
     override fun onStart() {
         super.onStart()

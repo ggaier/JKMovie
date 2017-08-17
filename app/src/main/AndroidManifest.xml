@@ -22,7 +22,7 @@
         </activity>
 
         <activity
-            android:name=".ui.movieinfo.MovieDetailsActivity"
+            android:name=".ui.movieinfo.MovieInfoActivity"
             android:theme="@style/JKMovieTheme.TransSysBar"/>
 
     </application>
