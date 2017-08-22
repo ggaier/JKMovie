@@ -21,7 +21,7 @@ interface ApiService {
     fun fetchPopularMovies(@Query("language") language: String?,
                            @Query("page") page: Int,
                            @Query("region") region: String?):
-            LiveData<VideosWrapper>
+            LiveData<ApiResponse<VideosWrapper>>
 
 
     /**
@@ -31,7 +31,7 @@ interface ApiService {
     fun fetchMovieInfo(@Path("movie_id") movieId: String,
                        @Query("language") language: String?,
                        @Query("append_to_response") appendToResponse: String?):
-            LiveData<Video>
+            LiveData<ApiResponse<Video>>
 
 
 }

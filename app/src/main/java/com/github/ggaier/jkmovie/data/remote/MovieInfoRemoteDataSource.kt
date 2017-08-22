@@ -1,5 +1,6 @@
 package com.github.ggaier.jkmovie.data.remote
 
+import android.arch.core.util.Function
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Transformations
 import com.github.ggaier.jkmovie.api.ApiService
@@ -14,7 +15,9 @@ class MovieInfoRemoteDataSource(val mApiService: ApiService) : MovieInfoDataSour
 
     override fun getMovieInfo(movieId: String, language: String?,
                               appendToResponse: String?): LiveData<Video> {
-        return mApiService.fetchMovieInfo(movieId, language, appendToResponse)
+        return Transformations.map(mApiService.fetchMovieInfo(movieId, language,
+                appendToResponse), { it.body })
+
     }
 
 }

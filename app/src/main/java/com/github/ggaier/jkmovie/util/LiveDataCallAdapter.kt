@@ -2,7 +2,7 @@ package com.github.ggaier.jkmovie.util
 
 import android.arch.lifecycle.LiveData
 import com.github.ggaier.jkmovie.R
-import com.orhanobut.logger.Logger
+import com.github.ggaier.jkmovie.api.ApiResponse
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Callback
@@ -15,37 +15,34 @@ import java.util.concurrent.atomic.AtomicBoolean
  * jwenbo52@gmail.com
  */
 class LiveDataCallAdapter(
-        val responseType: Type) : CallAdapter<R, LiveData<R>> {
+        val responseType: Type) : CallAdapter<R, LiveData<ApiResponse<R>>> {
 
-    override fun responseType(): Type {
-        return responseType
-    }
-
-    override fun adapt(call: Call<R>?): LiveData<R> {
-        return object : LiveData<R>() {
+    override fun adapt(call: Call<R>?): LiveData<ApiResponse<R>> {
+        return object : LiveData<ApiResponse<R>>() {
             val started = AtomicBoolean(false)
+
             override fun onActive() {
                 super.onActive()
                 if (started.compareAndSet(false, true)) {
                     call?.enqueue(object : Callback<R> {
-                        override fun onFailure(call: Call<R>?, t: Throwable?) {
-                            Logger.e("response type $responseType, onFailure ${t?.printStackTrace()}")
-                            postValue(null)
-                        }
-
                         override fun onResponse(call: Call<R>?,
                                                 response: Response<R>?) {
-                            if (response?.isSuccessful ?: false) {
-                                postValue(response?.body())
-                            } else {
-                                postValue(null)
-                            }
+                            postValue(ApiResponse(response))
                         }
+
+                        override fun onFailure(call: Call<R>?, t: Throwable?) {
+                            postValue(ApiResponse(t))
+                        }
+
                     })
                 }
             }
 
         }
+    }
+
+    override fun responseType(): Type {
+        return responseType
     }
 
 }
