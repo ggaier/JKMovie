@@ -34,8 +34,9 @@ data class Video(val id: String,
             return TMDB_IMAGE_BASE_URL + posterPath
         }
 
-    val genresInString = genres?.joinToString(separator = " ", limit = 3,
-            transform = { it.name })
+    val genresInString: String
+        get() = genres?.joinToString(separator = " ", limit = 3,
+                transform = { it.name }) ?: ""
 
     companion object {
         @JvmField val CREATOR: Parcelable.Creator<Video> = object : Parcelable.Creator<Video> {

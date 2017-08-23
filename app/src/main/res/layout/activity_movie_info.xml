@@ -68,7 +68,7 @@
                 tools:text="Action"
                 android:text="@{movie.genresInString}"
                 tools:textColor="@color/black_primary"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
 
         </android.support.design.widget.AppBarLayout>
 

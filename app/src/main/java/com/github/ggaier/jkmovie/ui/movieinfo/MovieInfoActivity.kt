@@ -45,7 +45,7 @@ class MovieInfoActivity : BaseActivity() {
         mBinding.movie = mPayload
         mMovieInfoModel = Injections.getMovieInfoViewModel(this)
         mMovieInfoModel.mMovieInfo.observe(this, Observer<Video> {
-            Logger.d("movie info $it, genres in string ${it?.genres}")
+            Logger.d("movie info $it, genres in string ${it?.genresInString}")
             mBinding.movie = it
         })
     }
