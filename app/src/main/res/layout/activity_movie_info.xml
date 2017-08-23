@@ -4,9 +4,12 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="java.util.List"/>
+        <import type="com.github.ggaier.jkmovie.data.vo.Genre"/>
         <variable
             name="movie"
             type="com.github.ggaier.jkmovie.data.vo.Video"/>
+
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -46,6 +49,22 @@
                     />
 
             </android.support.design.widget.CollapsingToolbarLayout>
+
+            <RatingBar
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="true"
+                android:rating="@{movie.voteAverage}"/>
+
+            <TextView
+                android:id="@+id/genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="@{movie.genresInString}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
+
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.widget.NestedScrollView

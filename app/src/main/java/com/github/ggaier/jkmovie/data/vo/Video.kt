@@ -22,9 +22,8 @@ data class Video(val id: String,
                  @SerializedName("backdrop_path") private val backdropPath: String,
                  @SerializedName("adult") val isAdult: Boolean,
                  val overview: String,
-                 @SerializedName("release_date") val releaseDate: String) :
-        Parcelable {
-
+                 @SerializedName("release_date") val releaseDate: String,
+                 val genres: List<Genre>?) : Parcelable {
     val realBackdropPath: String
         get() {
             return TMDB_IMAGE_BASE_URL.plus(backdropPath)
@@ -35,9 +34,10 @@ data class Video(val id: String,
             return TMDB_IMAGE_BASE_URL + posterPath
         }
 
+    val genresInString = genres?.joinToString(" ", transform = { it.name })
+
     companion object {
-        @JvmField
-        val CREATOR: Parcelable.Creator<Video> = object : Parcelable.Creator<Video> {
+        @JvmField val CREATOR: Parcelable.Creator<Video> = object : Parcelable.Creator<Video> {
             override fun createFromParcel(source: Parcel): Video = Video(source)
             override fun newArray(size: Int): Array<Video?> = arrayOfNulls(size)
         }
@@ -57,12 +57,11 @@ data class Video(val id: String,
             source.readString(),
             1 == source.readInt(),
             source.readString(),
-            source.readString()
+            source.readString(),
+            source.createTypedArrayList(Genre.CREATOR)
     )
 
-    override fun describeContents(): Int {
-        return 0
-    }
+    override fun describeContents() = 0
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
         dest.writeString(id)
@@ -79,8 +78,8 @@ data class Video(val id: String,
         dest.writeInt((if (isAdult) 1 else 0))
         dest.writeString(overview)
         dest.writeString(releaseDate)
+        dest.writeTypedList(genres)
     }
-
 }
 
 
