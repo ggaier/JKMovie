@@ -45,16 +45,16 @@ class MovieInfoActivity : BaseActivity() {
         mBinding.movie = mPayload
         mMovieInfoModel = Injections.getMovieInfoViewModel(this)
         mMovieInfoModel.mMovieInfo.observe(this, Observer<Video> {
-            Logger.d("movie info $it")
+            Logger.d("movie info $it, genres in string ${it?.genres}")
             mBinding.movie = it
         })
     }
 
-
-    override fun onStart() {
-        super.onStart()
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
         video_poster.load(this, mPayload.realPosterPath)
     }
+
 
     override fun onResume() {
         super.onResume()

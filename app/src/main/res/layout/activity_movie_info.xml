@@ -55,6 +55,7 @@
                 android:id="@+id/rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_large"
                 android:isIndicator="true"
                 android:rating="@{movie.voteAverage}"/>
 
@@ -63,8 +64,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
+                android:layout_marginLeft="@dimen/spacing_large"
+                tools:text="Action"
                 android:text="@{movie.genresInString}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
+                tools:textColor="@color/black_primary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
         </android.support.design.widget.AppBarLayout>
 
