@@ -44,7 +44,7 @@
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
-                    style="@style/JKMovieTheme.Toolbar"
+                    style="@style/Widget.JKMovie.Toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:fitsSystemWindows="true"
@@ -70,7 +70,7 @@
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:maxLines="1"
                 android:text="@{movie.genresInString}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 tools:text="Action"/>
 
         </android.support.design.widget.AppBarLayout>

@@ -25,7 +25,7 @@ data class Video(val id: String,
                  @SerializedName("release_date") val releaseDate: String,
                  val genres: List<Genre>?,
                  @SerializedName("runtime") val duration: Int?) : Parcelable {
-    
+
     val realBackdropPath: String
         get() {
             return TMDB_IMAGE_BASE_URL.plus(backdropPath)
@@ -37,10 +37,12 @@ data class Video(val id: String,
         }
 
     val genresInString: String
-        get() = genres?.joinToString(separator = " ", postfix = "- " +
-                "$releaseDate · $duration",
-                limit = 3,
-                transform = { it.name }) ?: ""
+        get() {
+            return genres?.joinToString(separator = " ", postfix = " - " +
+                    "$releaseDate · $duration min",
+                    limit = 3,
+                    transform = { it.name }) ?: ""
+        }
 
     companion object {
         @JvmField val CREATOR: Parcelable.Creator<Video> = object : Parcelable.Creator<Video> {

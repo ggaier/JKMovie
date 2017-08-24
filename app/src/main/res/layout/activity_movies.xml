@@ -22,7 +22,7 @@
 
             <Toolbar
                 android:id="@+id/toolbar"
-                style="@style/JKMovieTheme.Toolbar"
+                style="@style/Widget.JKMovie.Toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:actionBarSize"
                 android:title="@string/app_name"/>

@@ -6,9 +6,17 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
         <item name="android:textColorPrimary">@color/black_primary</item>
+        <item name="android:textColorPrimaryInverse">@color/white_primary</item>
+        <item name="android:textColorSecondaryInverse">@color/white_secondary
+        </item>
+        <item name="android:textColorHintInverse">
+            @color/white_hint_and_disabled
+        </item>
         <item name="android:textColorHint">@color/black_hint_and_disable</item>
         <item name="android:textColorSecondary">@color/black_secondary</item>
+
         <item name="android:windowBackground">@color/white_primary</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
         <item name="android:windowAllowReturnTransitionOverlap">true</item>
@@ -35,12 +43,30 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <style name="JKMovieTheme.Toolbar" parent="Widget.AppCompat.Toolbar">
+
+    <style name="Widget.JKMovie" parent=""/>
+
+    <style name="Widget.JKMovie.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="titleTextAppearance">@style/TextAppearance.JKMovie.Title
+        </item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.JKMovie.Subtitle</item>
     </style>
 
     <style name="Widget.JKMovie.RatingBar" parent="Widget.AppCompat.RatingBar">
         <item name="android:minHeight">24dip</item>
         <item name="android:maxHeight">24dip</item>
+    </style>
+
+
+
+    <style name="TextAppearance.JKMovie" parent="TextAppearance.AppCompat"/>
+
+    <style name="TextAppearance.JKMovie.Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/white_primary</item>
+    </style>
+
+    <style name="TextAppearance.JKMovie.Subtitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textColor">@color/white_primary</item>
     </style>
 
     <style name="TextAppearance.Primary" parent="">
