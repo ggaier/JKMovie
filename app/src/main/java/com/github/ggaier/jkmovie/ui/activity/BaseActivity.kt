@@ -17,10 +17,14 @@ abstract class BaseActivity : LifecycleActivity() {
         super.onCreate(savedInstanceState)
     }
 
-    fun setActivityActionBar(toolbar: Toolbar, homeAsUp: Boolean = false,
-                             @DrawableRes homeAsUpIndicator: Int = R.drawable.ic_arrow_back,
+    fun setActivityActionBar(toolbar: Toolbar, homeAsUp: Boolean = true,
+                             @DrawableRes homeAsUpIndicator: Int = 0,
                              title: String = "") {
-        toolbar.navigationIconResource = homeAsUpIndicator
+        if (homeAsUpIndicator != 0)
+            toolbar.navigationIconResource = homeAsUpIndicator
+        if (homeAsUp) {
+            toolbar.navigationIconResource = R.drawable.ic_arrow_back
+        }
         toolbar.setNavigationOnClickListener { if (homeAsUp) finish() else onNavigationIconClicked() }
         toolbar.title = title
     }

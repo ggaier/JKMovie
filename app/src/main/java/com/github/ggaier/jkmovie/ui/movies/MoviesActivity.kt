@@ -29,8 +29,8 @@ class MoviesActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this,
                 R.layout.activity_movies)
-        setActivityActionBar(toolbar, homeAsUp = false,
-                title = getString(R.string.app_name))
+        setActivityActionBar(toolbar, homeAsUp = false, title = getString(R
+                .string.app_name))
         mMoviesModel = Injections.getMoviesViewModel(this)
         refresh_layout.setColorSchemeResources(R.color.colorPrimary)
         mBinding.isLoading = true
