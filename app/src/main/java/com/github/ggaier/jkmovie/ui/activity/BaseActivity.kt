@@ -17,7 +17,7 @@ abstract class BaseActivity : LifecycleActivity() {
         super.onCreate(savedInstanceState)
     }
 
-    fun setActivityActionBar(toolbar: Toolbar, homeAsUp: Boolean = true,
+    fun setActivityActionBar(toolbar: Toolbar, homeAsUp: Boolean = false,
                              @DrawableRes homeAsUpIndicator: Int = R.drawable.ic_arrow_back,
                              title: String = "") {
         toolbar.navigationIconResource = homeAsUpIndicator
@@ -25,7 +25,8 @@ abstract class BaseActivity : LifecycleActivity() {
         toolbar.title = title
     }
 
-    fun onNavigationIconClicked() {}
+    fun onNavigationIconClicked() {
+    }
 
 
 }

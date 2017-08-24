@@ -27,7 +27,10 @@ class MoviesActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_movies)
+        mBinding = DataBindingUtil.setContentView(this,
+                R.layout.activity_movies)
+        setActivityActionBar(toolbar, homeAsUp = false,
+                title = getString(R.string.app_name))
         mMoviesModel = Injections.getMoviesViewModel(this)
         refresh_layout.setColorSchemeResources(R.color.colorPrimary)
         mBinding.isLoading = true
@@ -40,7 +43,8 @@ class MoviesActivity : BaseActivity() {
             MovieInfoActivity.show(this, adapter.mDatas[position])
         })
         mBinding.recyclerView.adapter = mAdapter
-        recycler_view.layoutManager = GridLayoutManager(this, 1) as RecyclerView.LayoutManager
+        recycler_view.layoutManager = GridLayoutManager(this,
+                1) as RecyclerView.LayoutManager
         recycler_view.addItemDecoration(SpacesItemDecoration(dip(4)))
         mMoviesModel.setMovieTag(page = mStartPage)
         mAdapter.mOnLoadMoreListener = { mMoviesModel.setMovieTag(page = ++mStartPage) }
@@ -60,7 +64,8 @@ class MoviesActivity : BaseActivity() {
 
     class MoviesAdapter(val activity: MoviesActivity,
                         listener: (adapter: BaseAdapter<Video>, position: Int) -> Unit)
-        : BaseAdapter<Video>(defaultLayoutId = R.layout.list_item_movie_1, mListener = listener) {
+        : BaseAdapter<Video>(defaultLayoutId = R.layout.list_item_movie_1,
+            mListener = listener) {
 
 
         override fun bindDefault(holder: BaseViewHolder?, itemData: Video) {

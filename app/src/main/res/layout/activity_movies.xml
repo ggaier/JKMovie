@@ -20,9 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Toolbar
+            <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 style="@style/Widget.JKMovie.Toolbar"
+                app:titleTextColor="@color/white_primary"
                 android:layout_width="match_parent"
                 android:layout_height="?android:actionBarSize"
                 android:title="@string/app_name"/>
