@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/JKMovieTheme">
+        android:theme="@style/JKMovie">
 
         <activity android:name=".ui.movies.MoviesActivity">
             <intent-filter>
@@ -23,7 +23,7 @@
 
         <activity
             android:name=".ui.movieinfo.MovieInfoActivity"
-            android:theme="@style/JKMovieTheme.TransSysBar"/>
+            android:theme="@style/JKMovie.TransSysBar"/>
 
     </application>
 

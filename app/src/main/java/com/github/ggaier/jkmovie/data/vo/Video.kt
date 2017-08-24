@@ -23,7 +23,9 @@ data class Video(val id: String,
                  @SerializedName("adult") val isAdult: Boolean,
                  val overview: String,
                  @SerializedName("release_date") val releaseDate: String,
-                 val genres: List<Genre>?) : Parcelable {
+                 val genres: List<Genre>?,
+                 @SerializedName("runtime") val duration: Int?) : Parcelable {
+    
     val realBackdropPath: String
         get() {
             return TMDB_IMAGE_BASE_URL.plus(backdropPath)
@@ -35,7 +37,9 @@ data class Video(val id: String,
         }
 
     val genresInString: String
-        get() = genres?.joinToString(separator = " ", limit = 3,
+        get() = genres?.joinToString(separator = " ", postfix = "- " +
+                "$releaseDate · $duration",
+                limit = 3,
                 transform = { it.name }) ?: ""
 
     companion object {
@@ -60,7 +64,8 @@ data class Video(val id: String,
             1 == source.readInt(),
             source.readString(),
             source.readString(),
-            source.createTypedArrayList(Genre.CREATOR)
+            source.createTypedArrayList(Genre.CREATOR),
+            source.readValue(Int::class.java.classLoader) as Int?
     )
 
     override fun describeContents() = 0
@@ -81,6 +86,7 @@ data class Video(val id: String,
         dest.writeString(overview)
         dest.writeString(releaseDate)
         dest.writeTypedList(genres)
+        dest.writeValue(duration)
     }
 }
 
