@@ -4,7 +4,6 @@ import android.arch.lifecycle.Observer
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import com.github.ggaier.jkmovie.R
 import com.github.ggaier.jkmovie.data.vo.Video
 import com.github.ggaier.jkmovie.databinding.ActivityMoviesBinding
@@ -43,8 +42,7 @@ class MoviesActivity : BaseActivity() {
             MovieInfoActivity.show(this, adapter.mDatas[position])
         })
         mBinding.recyclerView.adapter = mAdapter
-        recycler_view.layoutManager = GridLayoutManager(this,
-                1) as RecyclerView.LayoutManager
+        recycler_view.layoutManager = GridLayoutManager(this, 1)
         recycler_view.addItemDecoration(SpacesItemDecoration(dip(4)))
         mMoviesModel.setMovieTag(page = mStartPage)
         mAdapter.mOnLoadMoreListener = { mMoviesModel.setMovieTag(page = ++mStartPage) }
