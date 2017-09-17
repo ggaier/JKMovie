@@ -57,11 +57,15 @@
     </style>
 
 
-    <style name="Widget.JKMovie.RatingBar" parent="Widget.AppCompat.RatingBar">
+    <style name="Widget.JKMovie.ProgressBar.Horizontal"
+           parent="Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:minHeight">24dip</item>
         <item name="android:maxHeight">24dip</item>
+        <item name="android:max">100</item>
+        <item name="android:progressDrawable">@drawable/progress_horizontal
+        </item>
+        <item name="android:indeterminate">false</item>
     </style>
-
 
 
     <style name="TextAppearance.JKMovie" parent="TextAppearance.AppCompat"/>

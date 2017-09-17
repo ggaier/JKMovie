@@ -38,10 +38,9 @@ data class Video(val id: String,
 
     val genresInString: String
         get() {
-            return genres?.joinToString(separator = " ", postfix = " - " +
-                    "$releaseDate · $duration min",
-                    limit = 3,
-                    transform = { it.name }) ?: ""
+            return genres?.joinToString(separator = " ", prefix =
+            " $releaseDate, $duration min ", limit = 3, transform = { it.name
+            }) ?: ""
         }
 
     companion object {

@@ -30,15 +30,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|enterAlways|exitUntilCollapsed">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 style="@style/Widget.JKMovie.Toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:fitsSystemWindows="true"
-                app:layout_scrollFlags="scroll|enterAlways|exitUntilCollapsed"
                 app:navigationIcon="@drawable/ic_arrow_back"
                 app:title="@{movie.title}"
                 />
@@ -52,18 +51,19 @@
                 android:maxLines="1"
                 android:text="@{movie.genresInString}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@color/white_primary"
                 tools:text="Action"/>
 
 
-            <RatingBar
+            <TextView
                 android:id="@+id/rating"
-                style="@style/Widget.JKMovie.RatingBar"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/spacing_large"
-                android:isIndicator="true"
-                android:rating="@{movie.voteAverage}"
-                android:visibility="gone"/>
+                android:layout_width="wrap_content"
+                android:drawableLeft="@drawable/ic_star"
+                android:drawableTint="@color/white_primary"
+                android:drawablePadding="@dimen/spacing_small"
+                android:text="@{movie.voteAverage}"/>
+
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.widget.NestedScrollView
