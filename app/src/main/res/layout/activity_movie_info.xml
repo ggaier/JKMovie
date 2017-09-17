@@ -62,7 +62,7 @@
                 android:drawableLeft="@drawable/ic_star"
                 android:drawableTint="@color/white_primary"
                 android:drawablePadding="@dimen/spacing_small"
-                android:text="@{movie.voteAverage}"/>
+                android:text="@{String.valueOf(movie.voteAverage)}"/>
 
         </android.support.design.widget.AppBarLayout>
 
