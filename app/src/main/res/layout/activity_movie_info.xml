@@ -28,31 +28,32 @@
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="256dp"
+            android:layout_height="wrap_content"
             android:background="@null"
             android:fitsSystemWindows="true">
 
-            <android.support.design.widget.CollapsingToolbarLayout
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/Widget.JKMovie.Toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
+                android:layout_height="?attr/actionBarSize"
                 android:fitsSystemWindows="true"
-                app:contentScrim="@android:color/transparent"
-                app:expandedTitleGravity="center"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:title="@{movie.title}">
+                app:layout_scrollFlags="scroll|enterAlways|exitUntilCollapsed"
+                app:navigationIcon="@drawable/ic_arrow_back"
+                app:title="@{movie.title}"
+                />
 
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    style="@style/Widget.JKMovie.Toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:fitsSystemWindows="true"
-                    app:layout_collapseMode="pin"
-                    app:navigationIcon="@drawable/ic_arrow_back"
-                    />
+            <TextView
+                android:id="@+id/genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:maxLines="1"
+                android:text="@{movie.genresInString}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                tools:text="Action"/>
 
-            </android.support.design.widget.CollapsingToolbarLayout>
 
             <RatingBar
                 android:id="@+id/rating"
@@ -61,18 +62,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:isIndicator="true"
-                android:rating="@{movie.voteAverage}"/>
-
-            <TextView
-                android:id="@+id/genre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/spacing_large"
-                android:maxLines="1"
-                android:text="@{movie.genresInString}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                tools:text="Action"/>
-
+                android:rating="@{movie.voteAverage}"
+                android:visibility="gone"/>
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.widget.NestedScrollView
