@@ -42,11 +42,16 @@ class MoviesActivity : BaseActivity() {
             MovieInfoActivity.show(this, adapter.mDatas[position])
         })
         mBinding.recyclerView.adapter = mAdapter
-        recycler_view.layoutManager = GridLayoutManager(this, 1)
+        val lm = GridLayoutManager(this, 2)
+        recycler_view.layoutManager = lm
+        lm.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup(){
+            override fun getSpanSize(position: Int): Int {
+                return 1
+            }
+        }
         recycler_view.addItemDecoration(SpacesItemDecoration(dip(4)))
         mMoviesModel.setMovieTag(page = mStartPage)
         mAdapter.mOnLoadMoreListener = { mMoviesModel.setMovieTag(page = ++mStartPage) }
-
         mMoviesModel.getMovies().observe(this,
                 Observer<List<Video>?> {
                     mBinding.isLoading = false
