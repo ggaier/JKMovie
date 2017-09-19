@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.view.MenuItem
 import com.github.ggaier.jkmovie.R
 import com.github.ggaier.jkmovie.data.vo.Video
 import com.github.ggaier.jkmovie.databinding.ActivityMoviesBinding
@@ -30,6 +31,7 @@ class MoviesActivity : BaseActivity() {
                 R.layout.activity_movies)
         setActivityActionBar(toolbar, homeAsUp = false, title = getString(R
                 .string.app_name))
+        onCreateToolbarOptionsMenu(R.menu.menu_main)
         mMoviesModel = Injections.getMoviesViewModel(this)
         refresh_layout.setColorSchemeResources(R.color.colorPrimary)
         mBinding.isLoading = true
@@ -63,6 +65,10 @@ class MoviesActivity : BaseActivity() {
                     }
                     mAdapter.addDatas(it)
                 })
+    }
+
+    override fun onToolbarMenuSelected(it: MenuItem?): Boolean {
+        return super.onToolbarMenuSelected(it)
     }
 
     class MoviesAdapter(val activity: MoviesActivity,

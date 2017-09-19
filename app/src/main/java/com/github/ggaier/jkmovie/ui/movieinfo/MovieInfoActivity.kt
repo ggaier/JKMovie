@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.view.Menu
 import android.view.WindowManager
 import com.github.ggaier.jkmovie.BuildConfig
 import com.github.ggaier.jkmovie.R
@@ -60,11 +59,6 @@ class MovieInfoActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         mMovieInfoModel.mMovieId = mPayload.id
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
     }
 
 }
